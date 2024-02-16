@@ -8,6 +8,7 @@ import Signup from './Signup';
 import Home from "./Home";
 import ArrowBtn from "../components/ArrowBtn";
 import colors from "../styles/colors";
+import BottomTab from "../Navigation/BottomTab";
 
 const Login = ({navigation}) => {
   const [number, setNumber] = useState("");
@@ -40,7 +41,7 @@ const Login = ({navigation}) => {
       return;
     }
     else {
-      navigation.navigate(Home);
+      navigation.navigate(BottomTab);
     }
   }
 

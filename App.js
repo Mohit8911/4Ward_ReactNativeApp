@@ -5,6 +5,7 @@ import Signup from './src/screens/Signup';
 import Home from './src/screens/Home';
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import BottomTab from './src/Navigation/BottomTab';
 
 const Stack = createNativeStackNavigator();
 
@@ -29,8 +30,8 @@ const App = () => {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="Home"
-          component={Home}
+          name="BottomTab"
+          component={BottomTab}
           options={{ headerShown: false }}
         />
 

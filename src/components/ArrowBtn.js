@@ -1,10 +1,11 @@
 import { StyleSheet, Image } from 'react-native'
 import React from 'react'
+import imagePath from '../constants/imagePath';
 
 const ArrowBtn = () => {
   return (
     <Image
-      source={require("../assets/images/ic_back_arrow.png")}
+      source={imagePath.BackArrow}
       style={styles.backArrow}
     ></Image>
   );

@@ -1,25 +1,24 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-
-const Home = () => {
+const Notifications = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Home</Text>
+      <Text style={styles.text}>Notifications</Text>
     </View>
   );
-}
+};
 
-export default Home
+export default Notifications;
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex:1,
+    justifyContent: "center",
+    alignItems: "center",
+    flex: 1,
   },
   text: {
     fontSize: 50,
-    color: 'red',
-  }
-})
+    color: "red",
+  },
+});
