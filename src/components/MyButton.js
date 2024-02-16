@@ -17,8 +17,6 @@ const styles = StyleSheet.create({
   loginBtn: {
     backgroundColor: "#F43738",
     borderRadius: 8,
-    // marginTop: 88,
-    // marginBottom:0,
     justifyContent: "center",
     alignItems: "center",
     padding: 15,

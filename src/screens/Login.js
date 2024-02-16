@@ -6,6 +6,7 @@ import MyTextInput from "../components/MyTextInput";
 import MyButton from "../components/MyButton";
 import Signup from './Signup';
 import Home from "./Home";
+import ArrowBtn from "../components/ArrowBtn";
 
 const Login = ({navigation}) => {
   const [number, setNumber] = useState("");
@@ -44,10 +45,7 @@ const Login = ({navigation}) => {
 
   return (
     <KeyboardAvoidingView style={styles.container}>
-      <Image
-        source={require("../assets/images/ic_back_arrow.png")}
-        style={styles.backArrow}
-      ></Image>
+      <ArrowBtn/>
       <TitleComp
         title1="Welcome back!"
         title2="We are happy to see. You can login to continue."
@@ -100,16 +98,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#2E2E2E",
     padding: 24,
   },
-  backArrow: {
-    marginTop: 56,
-    height: 12,
-    width: 13,
-  },
   splitContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    // marginTop: 16,
+    marginTop: 16,
     // marginBottom: 0,
     height: 32,
   },

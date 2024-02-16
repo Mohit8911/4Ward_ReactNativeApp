@@ -5,6 +5,7 @@ import MyTextInput from "../components/MyTextInput";
 import MyButton from "../components/MyButton";
 import Home from "./Home";
 import Login from "./Login";
+import ArrowBtn from "../components/ArrowBtn";
 
 const Signup = ({navigation}) => {
   const [number, setNumber] = useState("");
@@ -31,12 +32,9 @@ const validate = () => {
 };
 
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-        <Image
-          source={require("../assets/images/ic_back_arrow.png")}
-          style={styles.backArrow}
-        ></Image>
+        <ArrowBtn/>
       </TouchableOpacity>
 
       <TitleComp
@@ -64,8 +62,10 @@ const validate = () => {
         value={number}
         keyboardType={"number-pad"}
       />
-      <MyButton title="NEXT" validate={validate}/>
-    </ScrollView>
+      <View style={{flex:1, justifyContent: "flex-end", marginBottom:15}}>
+        <MyButton title="NEXT" validate={validate} />
+      </View>
+    </View>
   );
 };
 
@@ -76,11 +76,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#2E2E2E",
     padding: 24,
-  },
-  backArrow: {
-    marginTop: 56,
-    height: 12,
-    width: 13,
   },
   splitContainer: {
     flexDirection: "row",
