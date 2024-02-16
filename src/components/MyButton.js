@@ -1,7 +1,6 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
-import Login from "../screens/Login";
-import Home from "../screens/Home";
+import colors from "../styles/colors";
 
 const MyButton = ({ title, validate, style }) => {
   return (
@@ -15,7 +14,7 @@ export default MyButton;
 
 const styles = StyleSheet.create({
   loginBtn: {
-    backgroundColor: "#F43738",
+    backgroundColor: colors.buttonColor,
     borderRadius: 8,
     justifyContent: "center",
     alignItems: "center",

@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React from "react";
+import colors from "../styles/colors";
 
 
 
@@ -15,7 +16,7 @@ const MyTextInput = ({ placeholder, setValue, value,style,isPasswordSecure,setIs
       <TextInput
         style={{...styles.textInput }}
         placeholder={placeholder}
-        placeholderTextColor={"rgba(255,255,255,0.5)"}
+        placeholderTextColor={colors.placeholderColor}
         value={value}
         secureTextEntry={isPasswordSecure}
         {...rest}
@@ -23,7 +24,7 @@ const MyTextInput = ({ placeholder, setValue, value,style,isPasswordSecure,setIs
       ></TextInput>
       {placeholder == "Password" ? (
         <TouchableOpacity onPress={() => setIsPasswordSecure(!isPasswordSecure)}>
-          <Text style={{ color: "rgba(255,255,255,0.5)" }}>Show</Text>
+          <Text style={{ color: colors.placeholderColor }}>Show</Text>
         </TouchableOpacity>
       ) : null}
     </View>

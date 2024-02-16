@@ -1,11 +1,11 @@
-import { StyleSheet, Text, ScrollView, KeyboardAvoidingView,View, Image, TouchableOpacity, Alert } from "react-native";
+import { StyleSheet,View, Image, TouchableOpacity, Alert } from "react-native";
 import React, { useState } from "react";
 import TitleComp from "../components/TitleComp";
 import MyTextInput from "../components/MyTextInput";
 import MyButton from "../components/MyButton";
 import Home from "./Home";
-import Login from "./Login";
 import ArrowBtn from "../components/ArrowBtn";
+import colors from "../styles/colors";
 
 const Signup = ({navigation}) => {
   const [number, setNumber] = useState("");
@@ -74,7 +74,7 @@ export default Signup;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#2E2E2E",
+    backgroundColor: colors.themeColor,
     padding: 24,
   },
   splitContainer: {

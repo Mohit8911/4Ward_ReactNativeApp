@@ -7,6 +7,7 @@ import MyButton from "../components/MyButton";
 import Signup from './Signup';
 import Home from "./Home";
 import ArrowBtn from "../components/ArrowBtn";
+import colors from "../styles/colors";
 
 const Login = ({navigation}) => {
   const [number, setNumber] = useState("");
@@ -95,7 +96,7 @@ export default Login;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#2E2E2E",
+    backgroundColor: colors.themeColor,
     padding: 24,
   },
   splitContainer: {
