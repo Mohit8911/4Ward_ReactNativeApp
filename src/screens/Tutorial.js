@@ -1,5 +1,13 @@
-import { StyleSheet, Text, View, Image, FlatList } from "react-native";
-import React from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  FlatList,
+  Dimensions,
+  TouchableOpacity,
+} from "react-native";
+import React, { useState } from "react";
 import colors from "../styles/colors";
 
 import TutorialCard from "../components/TutorialCard";
@@ -7,6 +15,29 @@ import { moderateScale, scale, verticalScale } from "../styles/scaling";
 
 const Tutorial = () => {
   const data = [1, 2, 3];
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleScroll = (event) => {
+    const scrollPosition = event.nativeEvent.contentOffset.x;
+    const screenWidth = Dimensions.get("window").width;
+    const index = Math.round(scrollPosition / screenWidth);
+    setActiveIndex(index);
+  };
+  let i = 0;
+
+  const renderDotIndicators = () => {
+    return data.map((item, index) => (
+      <View
+        key={index}
+        style={
+          activeIndex === index
+            ? { ...styles.dotIndicator, ...styles.active }
+            : styles.dotIndicator
+        }
+      ></View>
+    ));
+  };
+
   return (
     <View style={styles.container}>
       <FlatList
@@ -14,21 +45,18 @@ const Tutorial = () => {
         renderItem={({ item }) => <TutorialCard />}
         horizontal
         pagingEnabled={true}
+        onScroll={handleScroll}
         contentContainerStyle={{
           justifyContent: "center",
           alignItems: "center",
-
-          //   marginTop:verticalScale(20),
         }}
         keyExtractor={(item, index) => index}
       />
       <View style={styles.bottomContainer}>
-        <View style={styles.indicators}>
-          <View style={styles.dotIndicator}></View>
-          <View style={styles.dotIndicator}></View>
-          <View style={styles.dotIndicator}></View>
-        </View>
-        <Text style={styles.text}>GET STARTED</Text>
+        <View style={styles.indicators}>{renderDotIndicators()}</View>
+        <TouchableOpacity>
+          <Text style={styles.text}>GET STARTED</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -42,13 +70,14 @@ const styles = StyleSheet.create({
     backgroundColor: colors.themeColor,
     justifyContent: "center",
     alignItems: "center",
+    paddingTop: moderateScale(20),
   },
   bottomContainer: {
     justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
     width: "100%",
-      marginBottom:moderateScale(50),
+    marginBottom: moderateScale(50),
     paddingHorizontal: moderateScale(20),
   },
   indicators: {
@@ -57,7 +86,7 @@ const styles = StyleSheet.create({
   },
   dotIndicator: {
     height: verticalScale(5),
-    width: moderateScale(20),
+    width: moderateScale(16),
     backgroundColor: "white",
     opacity: 0.4,
     borderRadius: scale(50),
@@ -65,5 +94,10 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "white",
+  },
+  active: {
+    backgroundColor: "red",
+    width: moderateScale(32),
+    opacity: 1,
   },
 });

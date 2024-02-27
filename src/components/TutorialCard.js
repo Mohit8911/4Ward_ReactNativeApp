@@ -22,7 +22,6 @@ export default TutorialCard
 const styles = StyleSheet.create({
   cardContainer: {
     backgroundColor: "#4C4C4C",
-    // margin: moderateScale(200),
     marginHorizontal: moderateScale(12),
     height: verticalScale(550),
     width: moderateScale(328),
