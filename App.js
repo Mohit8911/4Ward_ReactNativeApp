@@ -7,6 +7,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import BottomTab from './src/Navigation/BottomTab';
 import Splash from './src/screens/Splash';
+import Tutorial from './src/screens/Tutorial';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,6 +26,11 @@ const App = () => {
   return (
     <NavigationContainer style={styles.container}>
       <Stack.Navigator>
+        <Stack.Screen
+          name="Tutorial"
+          component={Tutorial}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="Splash"
           component={Splash}
