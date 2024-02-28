@@ -1,11 +1,13 @@
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import React from "react";
 import colors from "../styles/colors";
+import { moderateScale } from "../styles/scaling";
 
-const MyButton = ({ title, validate, style }) => {
+const MyButton = ({ title, validate, style, color,icon }) => {
   return (
-    <TouchableOpacity style={{ ...styles.loginBtn,...style }} onPress={validate}>
-      <Text style={styles.loginBtnText}>{title}</Text>
+    <TouchableOpacity style={{ ...styles.loginBtn, ...style }} onPress={validate}>
+      {icon && <Image source={icon} style={styles.icon}></Image>}
+      <Text style={{ ...styles.loginBtnText,color }}>{title}</Text>
     </TouchableOpacity>
   );
 };
@@ -26,4 +28,9 @@ const styles = StyleSheet.create({
     letterSpacing: 0.88,
     lineHeight: 17,
   },
+  icon: {
+    position: 'absolute',
+    alignSelf: 'flex-start',
+    marginLeft:moderateScale(15),
+  }
 });

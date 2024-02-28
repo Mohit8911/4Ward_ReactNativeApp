@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View,Image } from 'react-native'
 import React from 'react'
 import { moderateScale, scale, verticalScale } from "../styles/scaling";
+import imagePath from '../constants/imagePath';
 
 const TutorialCard = () => {
   return (
     <View style={styles.cardContainer}>
-      <Image source={require("../assets/images/ic_1.png")}></Image>
+      <Image source={imagePath.TutorialImage}></Image>
       <View style={styles.innerTextContainer}>
         <Text style={styles.heading}>Hendrerit vulputate sem</Text>
         <Text style={styles.para}>

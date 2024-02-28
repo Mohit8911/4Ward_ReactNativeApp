@@ -8,6 +8,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import BottomTab from './src/Navigation/BottomTab';
 import Splash from './src/screens/Splash';
 import Tutorial from './src/screens/Tutorial';
+import LoginOptions from './src/screens/LoginOptions';
+import colors from './src/styles/colors';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +28,11 @@ const App = () => {
   return (
     <NavigationContainer style={styles.container}>
       <Stack.Navigator>
+        <Stack.Screen
+          name="LoginOptions"
+          component={LoginOptions}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="Tutorial"
           component={Tutorial}
@@ -68,7 +75,7 @@ export default App;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#2E2E2E",
+    backgroundColor: colors.themeColor,
     padding:24,
   },
 });

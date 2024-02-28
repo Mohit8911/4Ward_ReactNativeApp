@@ -2,13 +2,14 @@ import { Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { moderateScale, verticalScale } from "../styles/scaling";
 import colors from "../styles/colors";
+import imagePath from "../constants/imagePath";
 
 const Splash = () => {
   return (
     <View style={styles.container}>
       <Image
         style={styles.image}
-        source={require("../assets/images/logo.png")}
+        source={imagePath.Logo}
       ></Image>
     </View>
   );
