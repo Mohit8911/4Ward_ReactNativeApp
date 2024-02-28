@@ -7,14 +7,21 @@ import {
 } from "react-native";
 import React from "react";
 import colors from "../styles/colors";
+import { verticalScale } from "../styles/scaling";
 
-
-
-const MyTextInput = ({ placeholder, setValue, value,style,isPasswordSecure,setIsPasswordSecure, ...rest }) => {
+const MyTextInput = ({
+  placeholder,
+  setValue,
+  value,
+  style,
+  isPasswordSecure,
+  setIsPasswordSecure,
+  ...rest
+}) => {
   return (
-    <View style={{...styles.container,...style}}>
+    <View style={{ ...styles.container, ...style }}>
       <TextInput
-        style={{...styles.textInput }}
+        style={{ ...styles.textInput }}
         placeholder={placeholder}
         placeholderTextColor={colors.placeholderColor}
         value={value}
@@ -22,9 +29,13 @@ const MyTextInput = ({ placeholder, setValue, value,style,isPasswordSecure,setIs
         {...rest}
         onChangeText={(num) => setValue(num)}
       ></TextInput>
-      {placeholder == "Password" ? (
-        <TouchableOpacity onPress={() => setIsPasswordSecure(!isPasswordSecure)}>
-          <Text style={{ color: colors.placeholderColor }}>Show</Text>
+      {placeholder == "Password" || "Confirm Password" ? (
+        <TouchableOpacity
+          onPress={() => setIsPasswordSecure(!isPasswordSecure)}
+        >
+          <Text style={{ color: colors.placeholderColor }}>
+            {isPasswordSecure ? "Show" : "Hide"}
+          </Text>
         </TouchableOpacity>
       ) : null}
     </View>
@@ -37,8 +48,8 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent:'space-between',
-    marginTop: 16,
+    justifyContent: "space-between",
+    marginTop: verticalScale(16),
     borderRadius: 8,
     backgroundColor: "#4C4C4C",
     padding: 10,
@@ -46,6 +57,6 @@ const styles = StyleSheet.create({
 
   textInput: {
     color: "white",
-    flex:1,
+    flex: 1,
   },
 });

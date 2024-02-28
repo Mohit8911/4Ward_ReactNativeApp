@@ -15,25 +15,24 @@ const LoginOptions= () => {
         your data in our <Text style={{ fontWeight: "bold" }}>Privacy </Text>
         policy.
       </Text>
-      <MyButton
-        title="Log In with Phone number"
-        style={styles.btnStyle}
-        color="white"
-      />
+      <MyButton title="Log In with Phone number" style={styles.btnStyle} />
       <Text style={styles.text}>or</Text>
       <MyButton
         title="Log In with Google"
         style={styles.btnStyle2}
+        textStyle={{ color: "black" }}
         icon={imagePath.Google}
       />
       <MyButton
         title="Log In with Facebook"
         style={styles.btnStyle2}
+        textStyle={{ color: "black" }}
         icon={imagePath.Facebook}
       />
       <MyButton
         title="Log In with Apple"
         style={styles.btnStyle2}
+        textStyle={{ color: "black" }}
         icon={imagePath.Apple}
       />
       <View

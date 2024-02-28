@@ -3,11 +3,11 @@ import React from "react";
 import colors from "../styles/colors";
 import { moderateScale } from "../styles/scaling";
 
-const MyButton = ({ title, validate, style, color,icon }) => {
+const MyButton = ({ title, validate, style, textStyle,icon }) => {
   return (
     <TouchableOpacity style={{ ...styles.loginBtn, ...style }} onPress={validate}>
       {icon && <Image source={icon} style={styles.icon}></Image>}
-      <Text style={{ ...styles.loginBtnText,color }}>{title}</Text>
+      <Text style={{ ...styles.loginBtnText, ...textStyle }}>{title}</Text>
     </TouchableOpacity>
   );
 };

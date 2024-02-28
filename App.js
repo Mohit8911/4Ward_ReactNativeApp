@@ -10,6 +10,8 @@ import Splash from './src/screens/Splash';
 import Tutorial from './src/screens/Tutorial';
 import LoginOptions from './src/screens/LoginOptions';
 import colors from './src/styles/colors';
+import SignupOtp from './src/screens/SignupOtp';
+import SetPassword from './src/screens/SetPassword';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,6 +30,16 @@ const App = () => {
   return (
     <NavigationContainer style={styles.container}>
       <Stack.Navigator>
+        <Stack.Screen
+          name="SetPassword"
+          component={SetPassword}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="SignupOtp"
+          component={SignupOtp}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="LoginOptions"
           component={LoginOptions}
