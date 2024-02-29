@@ -16,8 +16,9 @@ import colors from "../styles/colors";
 import { moderateScale, scale, verticalScale } from "../styles/scaling";
 import { OtpInput } from "react-native-otp-entry";
 
-const SignupOtp = ({ navigation }) => {
+const SignupOtp = ({ navigation, route }) => {
   const [otp, setOtp] = useState("");
+  const { number } = route.params;
 
   const validate = () => {
     if (!otp.trim()) {
@@ -36,7 +37,7 @@ const SignupOtp = ({ navigation }) => {
     <KeyboardAvoidingView style={styles.container}>
       <ArrowBtn onPress={() => navigation.goBack()} />
       <TitleComp
-        title1="Enter the 4-digit code sent to you at 875 364 8947"
+        title1={`Enter the 4-digit code sent to you at ${number}`}
         title2="Edit my mobile number"
         style2={{ color: "#32C5FF" }}
       />

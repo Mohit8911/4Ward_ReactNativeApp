@@ -29,7 +29,7 @@ const validate = () => {
     return;
   }
 
-  navigation.navigate('SignupOtp');
+  navigation.navigate('SignupOtp', {number});
 };
 
   return (
