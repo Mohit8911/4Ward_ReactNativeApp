@@ -9,6 +9,7 @@ import Home from "./Home";
 import ArrowBtn from "../components/ArrowBtn";
 import colors from "../styles/colors";
 import BottomTab from "../Navigation/BottomTab";
+import { moderateScale, verticalScale } from "../styles/scaling";
 
 const Login = ({navigation}) => {
   const [number, setNumber] = useState("");
@@ -47,7 +48,7 @@ const Login = ({navigation}) => {
 
   return (
     <KeyboardAvoidingView style={styles.container}>
-      <ArrowBtn/>
+      <ArrowBtn onPress={()=> navigation.goBack()}/>
       <TitleComp
         title1="Welcome back!"
         title2="We are happy to see. You can login to continue."
@@ -74,8 +75,8 @@ const Login = ({navigation}) => {
         </TouchableOpacity>
       </View>
       <View style={{ flex:1, justifyContent:'flex-end'}}>
-        <MyButton title="LOGIN" validate={validate} />
-        <View
+        <MyButton title="LOGIN" onPress={validate}  />
+        {/* <View
           style={{
             ...styles.splitContainer,
             justifyContent: "center",
@@ -86,7 +87,7 @@ const Login = ({navigation}) => {
           <TouchableOpacity onPress={() => navigation.navigate("Signup")}>
             <Text style={styles.text2}> Sign Up</Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
       </View>
     </KeyboardAvoidingView>
   );
@@ -98,15 +99,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.themeColor,
-    padding: 24,
+    padding: moderateScale(24),
   },
   splitContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginTop: 16,
+    marginTop: verticalScale(16),
     // marginBottom: 0,
-    height: 32,
+    height: verticalScale(32),
   },
   text1: {
     textAlign: "center",

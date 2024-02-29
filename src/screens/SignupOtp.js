@@ -16,41 +16,25 @@ import colors from "../styles/colors";
 import { moderateScale, scale, verticalScale } from "../styles/scaling";
 import { OtpInput } from "react-native-otp-entry";
 
-const Login = ({ navigation }) => {
-  const [number, setNumber] = useState("");
-  const [password, setPassword] = useState("");
-  const [isPasswordSecure, setIsPasswordSecure] = useState(true);
+const SignupOtp = ({ navigation }) => {
+  const [otp, setOtp] = useState("");
 
   const validate = () => {
-    if (!number.trim() || !password.trim()) {
-      Alert.alert("All fields are required.");
+    if (!otp.trim()) {
+      Alert.alert("Otp is required.");
       return;
     }
-    if (number.trim().length != 10) {
-      Alert.alert("Mobile no. should contain only 10 digits.");
+    if (otp.trim().length != 4) {
+      Alert.alert("Otp should contain 4 digits.");
       return;
-    }
-
-    if (password.length < 8) {
-      Alert.alert("Password must be at least 8 characters!");
-      return;
-    } else if (!password.match(/[A-Z]/)) {
-      Alert.alert("Password must contain at least one capital letter!");
-      return;
-    } else if (!password.match(/[0-9]/)) {
-      Alert.alert("Password must contain at least one numeric character!");
-      return;
-    } else if (!password.match(/[!@#/$%^&*-]/)) {
-      Alert.alert("Password must contain at least one special character!");
-      return;
-    } else {
-      navigation.navigate(BottomTab);
+    }else {
+      navigation.navigate('SetPassword');
     }
   };
 
   return (
     <KeyboardAvoidingView style={styles.container}>
-      <ArrowBtn />
+      <ArrowBtn onPress={() => navigation.goBack()} />
       <TitleComp
         title1="Enter the 4-digit code sent to you at 875 364 8947"
         title2="Edit my mobile number"
@@ -60,7 +44,7 @@ const Login = ({ navigation }) => {
         numberOfDigits={4}
         focusColor="white"
         focusStickBlinkingDuration={500}
-        onTextChange={(text) => console.log(text)}
+        onTextChange={(text) => setOtp(text)}
         onFilled={(text) => console.log(`OTP is ${text}`)}
         theme={{
           containerStyle: styles.otpContainer,
@@ -72,13 +56,13 @@ const Login = ({ navigation }) => {
 
       <View style={{ flex: 1, justifyContent: "flex-end" }}>
         <Text style={styles.text}>Resend code in 0:14</Text>
-        <MyButton title="VERIFY" validate={validate} />
+        <MyButton title="VERIFY" onPress={validate} />
       </View>
     </KeyboardAvoidingView>
   );
 };
 
-export default Login;
+export default SignupOtp;
 
 const styles = StyleSheet.create({
   container: {

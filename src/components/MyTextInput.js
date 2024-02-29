@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import React from "react";
 import colors from "../styles/colors";
-import { verticalScale } from "../styles/scaling";
+import { moderateScale, scale, verticalScale } from "../styles/scaling";
 
 const MyTextInput = ({
   placeholder,
@@ -29,7 +29,7 @@ const MyTextInput = ({
         {...rest}
         onChangeText={(num) => setValue(num)}
       ></TextInput>
-      {placeholder == ("Password" || "Confirm Password") ? (
+      {(placeholder == "Password" || "Confirm password") ? (
         <TouchableOpacity
           onPress={() => setIsPasswordSecure(!isPasswordSecure)}
         >
@@ -51,9 +51,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     marginTop: verticalScale(16),
-    borderRadius: 8,
+    borderRadius: scale(8),
     backgroundColor: "#4C4C4C",
-    padding: 10,
+    padding: moderateScale(10),
   },
 
   textInput: {

@@ -1,23 +1,18 @@
+import React, { useState } from "react";
 import {
+  Alert,
+  Image,
+  KeyboardAvoidingView,
   StyleSheet,
   Text,
-  View,
-  ScrollView,
-  KeyboardAvoidingView,
-  Image,
   TouchableOpacity,
-  Alert,
+  View
 } from "react-native";
-import React, { useState } from "react";
-import { StatusBar } from "expo-status-bar";
-import TitleComp from "../components/TitleComp";
-import MyTextInput from "../components/MyTextInput";
-import MyButton from "../components/MyButton";
-import Signup from "./Signup";
-import Home from "./Home";
-import ArrowBtn from "../components/ArrowBtn";
-import colors from "../styles/colors";
 import BottomTab from "../Navigation/BottomTab";
+import MyButton from "../components/MyButton";
+import MyTextInput from "../components/MyTextInput";
+import TitleComp from "../components/TitleComp";
+import colors from "../styles/colors";
 import { moderateScale, scale, verticalScale } from "../styles/scaling";
 
 const SelectLocation = ({ navigation }) => {
@@ -36,7 +31,7 @@ const SelectLocation = ({ navigation }) => {
       Alert.alert("Please enter the address");
       return;
     } else {
-      navigation.navigate(BottomTab);
+      navigation.navigate('BottomTab');
     }
     };
     
@@ -88,7 +83,7 @@ const SelectLocation = ({ navigation }) => {
       {/* </View> */}
 
       <View style={{ flex: 1, justifyContent: "flex-end" }}>
-        <MyButton title="SELECT AND PROCEED" validate={validate} />
+        <MyButton title="SELECT AND PROCEED" onPress={validate} />
       </View>
     </KeyboardAvoidingView>
   );

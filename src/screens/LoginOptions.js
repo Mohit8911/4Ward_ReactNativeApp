@@ -1,11 +1,11 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
-import React from 'react'
-import imagePath from '../constants/imagePath'
-import colors from '../styles/colors'
-import { moderateScale, scale, verticalScale } from '../styles/scaling'
-import MyButton from '../components/MyButton'
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import React from "react";
+import imagePath from "../constants/imagePath";
+import colors from "../styles/colors";
+import { moderateScale, scale, verticalScale } from "../styles/scaling";
+import MyButton from "../components/MyButton";
 
-const LoginOptions= () => {
+const LoginOptions = ({navigation}) => {
   return (
     <View style={styles.container}>
       <Image source={imagePath.Logo} style={styles.image} />
@@ -15,7 +15,11 @@ const LoginOptions= () => {
         your data in our <Text style={{ fontWeight: "bold" }}>Privacy </Text>
         policy.
       </Text>
-      <MyButton title="Log In with Phone number" style={styles.btnStyle} />
+      <MyButton
+        title="Log In with Phone number"
+        style={styles.btnStyle}
+        onPress={() => navigation.navigate("Login")}
+      />
       <Text style={styles.text}>or</Text>
       <MyButton
         title="Log In with Google"
@@ -49,9 +53,9 @@ const LoginOptions= () => {
       </View>
     </View>
   );
-}
+};
 
-export default LoginOptions
+export default LoginOptions;
 const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
@@ -69,7 +73,7 @@ const styles = StyleSheet.create({
     color: "#9C9C9C",
     textAlign: "center",
     lineHeight: scale(20),
-    marginVertical:verticalScale(16),
+    marginVertical: verticalScale(16),
   },
   btnStyle: {
     width: "90%",

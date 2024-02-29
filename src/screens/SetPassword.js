@@ -53,7 +53,7 @@ const Login = ({ navigation }) => {
 
   return (
     <KeyboardAvoidingView style={styles.container}>
-      <ArrowBtn />
+      <ArrowBtn onPress={() => navigation.goBack()} />
       <TitleComp
         title1="Set password"
         title2="Create secure and unique password."
@@ -74,7 +74,7 @@ const Login = ({ navigation }) => {
       />
 
       <View style={{ flex: 1, justifyContent: "flex-end" }}>
-        <MyButton title="GET STARTED" validate={validate} />
+        <MyButton title="GET STARTED" onPress={validate} />
       </View>
     </KeyboardAvoidingView>
   );

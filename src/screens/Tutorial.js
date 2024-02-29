@@ -13,7 +13,7 @@ import colors from "../styles/colors";
 import TutorialCard from "../components/TutorialCard";
 import { moderateScale, scale, verticalScale } from "../styles/scaling";
 
-const Tutorial = () => {
+const Tutorial = ({navigation}) => {
   const data = [1, 2, 3];
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -23,8 +23,7 @@ const Tutorial = () => {
     const index = Math.round(scrollPosition / screenWidth);
     setActiveIndex(index);
   };
-  let i = 0;
-
+  
   const renderDotIndicators = () => {
     return data.map((item, index) => (
       <View
@@ -54,7 +53,7 @@ const Tutorial = () => {
       />
       <View style={styles.bottomContainer}>
         <View style={styles.indicators}>{renderDotIndicators()}</View>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("LoginOptions")}>
           <Text style={styles.text}>GET STARTED</Text>
         </TouchableOpacity>
       </View>
@@ -94,6 +93,8 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "white",
+    fontWeight: '500',
+    fontSize: scale(15),
   },
   active: {
     backgroundColor: "red",

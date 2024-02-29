@@ -1,4 +1,4 @@
-import { StyleSheet,View, Image, TouchableOpacity, Alert } from "react-native";
+import { StyleSheet,View, Image, TouchableOpacity, Alert, KeyboardAvoidingView } from "react-native";
 import React, { useState } from "react";
 import TitleComp from "../components/TitleComp";
 import MyTextInput from "../components/MyTextInput";
@@ -6,6 +6,7 @@ import MyButton from "../components/MyButton";
 import Home from "./Home";
 import ArrowBtn from "../components/ArrowBtn";
 import colors from "../styles/colors";
+import { moderateScale, verticalScale } from "../styles/scaling";
 
 const Signup = ({navigation}) => {
   const [number, setNumber] = useState("");
@@ -28,18 +29,19 @@ const validate = () => {
     return;
   }
 
-  navigation.navigate(Home);
+  navigation.navigate('SignupOtp');
 };
 
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView  style={styles.container}>
       <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-        <ArrowBtn/>
+        <ArrowBtn onPress={() => navigation.goBack()}/>
       </TouchableOpacity>
 
       <TitleComp
         title1="Create new account"
         title2="Create an account so you can continue."
+        style={{marginTop:16}}
       />
       <View style={styles.splitContainer}>
         <MyTextInput
@@ -62,10 +64,10 @@ const validate = () => {
         value={number}
         keyboardType={"number-pad"}
       />
-      <View style={{flex:1, justifyContent: "flex-end", marginBottom:15}}>
-        <MyButton title="NEXT" validate={validate} />
+      <View style={{flex:1, justifyContent: "flex-end"}}>
+        <MyButton title="NEXT" onPress={validate} />
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -75,12 +77,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.themeColor,
-    padding: 24,
+    padding: moderateScale(24),
   },
   splitContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginTop: 16,
+    // marginTop: verticalScale(16),
   },
 });

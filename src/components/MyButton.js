@@ -1,11 +1,11 @@
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import React from "react";
 import colors from "../styles/colors";
-import { moderateScale } from "../styles/scaling";
+import { moderateScale, scale, verticalScale } from "../styles/scaling";
 
-const MyButton = ({ title, validate, style, textStyle,icon }) => {
+const MyButton = ({ title, style, textStyle,icon, ...rest }) => {
   return (
-    <TouchableOpacity style={{ ...styles.loginBtn, ...style }} onPress={validate}>
+    <TouchableOpacity style={{ ...styles.loginBtn, ...style }}  {...rest} >
       {icon && <Image source={icon} style={styles.icon}></Image>}
       <Text style={{ ...styles.loginBtnText, ...textStyle }}>{title}</Text>
     </TouchableOpacity>
@@ -17,16 +17,16 @@ export default MyButton;
 const styles = StyleSheet.create({
   loginBtn: {
     backgroundColor: colors.buttonColor,
-    borderRadius: 8,
+    borderRadius: scale(8),
     justifyContent: "center",
     alignItems: "center",
-    padding: 15,
+    padding: moderateScale(15),
   },
   loginBtnText: {
     color: "white",
     fontWeight: "bold",
     letterSpacing: 0.88,
-    lineHeight: 17,
+    lineHeight: verticalScale(17),
   },
   icon: {
     position: 'absolute',

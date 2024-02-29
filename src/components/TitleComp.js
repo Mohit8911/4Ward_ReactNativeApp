@@ -15,7 +15,7 @@ export default TitleComp;
 
 const styles = StyleSheet.create({
     container: {
-    marginVertical: 16,
+    marginVertical: verticalScale(16),
     },
 
   title1: {
