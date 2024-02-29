@@ -12,6 +12,7 @@ import LoginOptions from './src/screens/LoginOptions';
 import colors from './src/styles/colors';
 import SignupOtp from './src/screens/SignupOtp';
 import SetPassword from './src/screens/SetPassword';
+import SelectLocation from './src/screens/SelectLocation';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,6 +31,11 @@ const App = () => {
   return (
     <NavigationContainer style={styles.container}>
       <Stack.Navigator>
+        <Stack.Screen
+          name="SelectLocation"
+          component={SelectLocation}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="SetPassword"
           component={SetPassword}

@@ -29,7 +29,7 @@ const MyTextInput = ({
         {...rest}
         onChangeText={(num) => setValue(num)}
       ></TextInput>
-      {placeholder == "Password" || "Confirm Password" ? (
+      {placeholder == ("Password" || "Confirm Password") ? (
         <TouchableOpacity
           onPress={() => setIsPasswordSecure(!isPasswordSecure)}
         >
@@ -38,6 +38,7 @@ const MyTextInput = ({
           </Text>
         </TouchableOpacity>
       ) : null}
+      
     </View>
   );
 };
