@@ -11,11 +11,10 @@ const Card = ({ item }) => {
         <View style={styles.userDetails}>
           <Text style={styles.name}>{item.name}</Text>
           <Text style={styles.address}>{item.address}</Text>
-              </View>
-              <TouchableOpacity>
-                  
-        <Image source={imagePath.Dots} />
-              </TouchableOpacity>
+        </View>
+        <TouchableOpacity>
+          <Image source={imagePath.Dots} />
+        </TouchableOpacity>
       </View>
       <Image source={item.snap} style={styles.snapStyle} />
       <View style={styles.lowerContainer}>
@@ -32,7 +31,7 @@ const Card = ({ item }) => {
           <Text style={styles.caption}>Likes {item.likes}</Text>
         </TouchableOpacity>
         <TouchableOpacity>
-        <Image source={imagePath.Direction} />
+          <Image source={imagePath.Direction} />
         </TouchableOpacity>
       </View>
     </View>

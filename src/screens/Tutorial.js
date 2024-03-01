@@ -50,6 +50,7 @@ const Tutorial = ({navigation}) => {
           alignItems: "center",
         }}
         keyExtractor={(item, index) => index}
+        showsHorizontalScrollIndicator={false}
       />
       <View style={styles.bottomContainer}>
         <View style={styles.indicators}>{renderDotIndicators()}</View>
