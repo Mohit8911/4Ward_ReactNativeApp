@@ -14,6 +14,9 @@ export default {
   Location: require("../assets/images/ic_loc.png"),
   Dots: require("../assets/images/ic_dots.png"),
   Direction: require("../assets/images/ic_direction.png"),
+  ProfileUser: require("../assets/images/ic_usrr_1.png"),
+  Key: require("../assets/images/ic_key.png"),
+  Logout: require("../assets/images/ic_logout.png"),
   dummySnap: {
     uri: "https://images.pexels.com/photos/2412607/pexels-photo-2412607.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
   },

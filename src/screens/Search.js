@@ -1,19 +1,14 @@
 import React, { useState } from "react";
 import {
-  Alert,
-  Image,
   KeyboardAvoidingView,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
-import BottomTab from "../Navigation/BottomTab";
-import MyButton from "../components/MyButton";
 import MyTextInput from "../components/MyTextInput";
-import TitleComp from "../components/TitleComp";
 import colors from "../styles/colors";
-import { moderateScale, scale, verticalScale } from "../styles/scaling";
+import { scale, verticalScale } from "../styles/scaling";
 
 const Search = ({ navigation }) => {
   const [data, setData] = useState([
@@ -25,15 +20,6 @@ const Search = ({ navigation }) => {
     { address: "Sector 67, Mohali" },
   ]);
   const [address, setAddress] = useState("");
-
-  const validate = () => {
-    if (!address.trim()) {
-      Alert.alert("Please enter the address");
-      return;
-    } else {
-      navigation.navigate("BottomTab");
-    }
-  };
 
   return (
     <KeyboardAvoidingView style={styles.container}>

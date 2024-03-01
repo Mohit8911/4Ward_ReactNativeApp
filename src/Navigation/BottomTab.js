@@ -7,6 +7,8 @@ import Notifications from "../screens/Settings";
 import { StatusBar } from "expo-status-bar";
 import imagePath from "../constants/imagePath";
 import { moderateScale, verticalScale } from "../styles/scaling";
+import Search from "../screens/Search";
+import Profile from "../screens/Profile";
 
 const Tab = createBottomTabNavigator();
 
@@ -39,7 +41,7 @@ const BottomTab = () => {
       />
       <Tab.Screen
         name="Search"
-        component={Notifications}
+        component={Search}
         options={{
           tabBarIcon: () => (
             <Image source={imagePath.Search} style={styles.tabBarIcon} />
@@ -65,8 +67,8 @@ const BottomTab = () => {
         }}
       />
       <Tab.Screen
-        name="User"
-        component={Notifications}
+        name="Profile"
+        component={Profile}
         options={{
           tabBarIcon: () => (
             <Image source={imagePath.User} style={styles.tabBarIcon} />
