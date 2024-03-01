@@ -13,6 +13,7 @@ import colors from "./src/styles/colors";
 import SignupOtp from "./src/screens/SignupOtp";
 import SetPassword from "./src/screens/SetPassword";
 import SelectLocation from "./src/screens/SelectLocation";
+import Search from "./src/screens/Search";
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +24,16 @@ const App = () => {
   return (
     <NavigationContainer style={styles.container}>
       <Stack.Navigator>
+        <Stack.Screen
+          name="Search"
+          component={Search}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="BottomTab"
+          component={BottomTab}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="Splash"
           component={Splash}
@@ -56,11 +67,6 @@ const App = () => {
         <Stack.Screen
           name="Login"
           component={Login}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="BottomTab"
-          component={BottomTab}
           options={{ headerShown: false }}
         />
 
