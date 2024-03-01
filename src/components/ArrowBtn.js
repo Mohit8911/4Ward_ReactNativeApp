@@ -15,8 +15,9 @@ export default ArrowBtn
 
 const styles = StyleSheet.create({
   backArrow: {
-    marginTop: verticalScale(56),
+    // marginTop: verticalScale(56),
     height: verticalScale(18),
     width: moderateScale(18),
+    resizeMode:'contain',
   },
 });

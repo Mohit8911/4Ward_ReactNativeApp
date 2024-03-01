@@ -99,7 +99,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.themeColor,
-    padding: moderateScale(24),
+    paddingHorizontal: moderateScale(24),
+    paddingTop: verticalScale(56),
   },
   splitContainer: {
     flexDirection: "row",

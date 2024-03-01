@@ -16,6 +16,7 @@ import SelectLocation from "./src/screens/SelectLocation";
 import Search from "./src/screens/Search";
 import Profile from "./src/screens/Profile";
 import Notifications from "./src/screens/Notifications";
+import EditProfile from "./src/screens/EditProfile";
 
 const Stack = createNativeStackNavigator();
 
@@ -28,7 +29,7 @@ const App = () => {
       <Stack.Navigator>
         <Stack.Screen
           name="Profile"
-          component={Notifications}
+          component={EditProfile}
           options={{ headerShown: false }}
         />
         <Stack.Screen
