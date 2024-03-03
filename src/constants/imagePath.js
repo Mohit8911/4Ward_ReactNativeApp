@@ -18,7 +18,8 @@ export default {
   Key: require("../assets/images/ic_key.png"),
   Logout: require("../assets/images/ic_logout.png"),
   Edit: require("../assets/images/ic_edit.png"),
-  Cross:require("../assets/images/ic_cross.png"),
+  Cross: require("../assets/images/ic_cross.png"),
+  Plus: require("../assets/images/ic_plus.png"),
   dummySnap: {
     uri: "https://images.pexels.com/photos/2412607/pexels-photo-2412607.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
   },

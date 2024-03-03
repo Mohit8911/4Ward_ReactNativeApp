@@ -21,7 +21,7 @@ const MyTextInput = ({
   return (
     <View style={{ ...styles.container, ...style }}>
       <TextInput
-        style={{ ...styles.textInput }}
+        style={styles.textInput}
         placeholder={placeholder}
         placeholderTextColor={colors.placeholderColor}
         value={value}

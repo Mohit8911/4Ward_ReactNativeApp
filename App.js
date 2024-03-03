@@ -19,6 +19,7 @@ import Notifications from "./src/screens/Notifications";
 import EditProfile from "./src/screens/EditProfile";
 import ChangePassword from "./src/screens/ChangePassword";
 import PostDetail from "./src/screens/PostDetail";
+import Post2 from "./src/screens/Post2";
 
 const Stack = createNativeStackNavigator();
 
@@ -34,7 +35,11 @@ const App = () => {
           component={EditProfile}
           options={{ headerShown: false }}
         /> */}
-
+        <Stack.Screen
+          name="Post2"
+          component={Post2}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="BottomTab"
           component={BottomTab}
@@ -50,6 +55,7 @@ const App = () => {
           component={EditProfile}
           options={{ headerShown: false }}
         />
+
         <Stack.Screen
           name="ChangePassword"
           component={ChangePassword}

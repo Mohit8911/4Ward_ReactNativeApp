@@ -89,24 +89,11 @@ const styles = StyleSheet.create({
     padding: moderateScale(24),
     paddingTop: verticalScale(56),
   },
-  splitContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginTop: 16,
-    height: 32,
-  },
-  text1: {
-    textAlign: "center",
-    color: "white",
-  },
-  text2: {
-    color: "#32C5FF",
-  },
+  
   headingContainer: {
     flexDirection: "row",
       alignItems: "center",
-      marginBottom: 32,
+      marginBottom: moderateScale(32),
   },
   title: {
     color: "white",
