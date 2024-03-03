@@ -3,7 +3,7 @@ import React from "react";
 import { moderateScale, scale, verticalScale } from "../styles/scaling";
 import imagePath from "../constants/imagePath";
 
-const Card = ({ item }) => {
+const Card = ({ item, navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
@@ -16,7 +16,11 @@ const Card = ({ item }) => {
           <Image source={imagePath.Dots} />
         </TouchableOpacity>
       </View>
-      <Image source={item.snap} style={styles.snapStyle} />
+      <TouchableOpacity
+        onPress={() => navigation.navigate("PostDetail", { item })}
+      >
+        <Image source={item.snap} style={styles.snapStyle} />
+      </TouchableOpacity>
       <View style={styles.lowerContainer}>
         <Text style={styles.caption}>{item.caption}</Text>
         <Text style={{ ...styles.address, marginTop: verticalScale(8) }}>

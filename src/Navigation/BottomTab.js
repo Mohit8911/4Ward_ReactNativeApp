@@ -84,8 +84,8 @@ export default BottomTab;
 const styles = StyleSheet.create({
   tabBarIcon: {
     // tintColor: "red",
-    height: verticalScale(24),
-    width: moderateScale(24),
+    height: verticalScale(20),
+    width: moderateScale(20),
     resizeMode: "contain",
   },
 });

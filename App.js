@@ -17,6 +17,8 @@ import Search from "./src/screens/Search";
 import Profile from "./src/screens/Profile";
 import Notifications from "./src/screens/Notifications";
 import EditProfile from "./src/screens/EditProfile";
+import ChangePassword from "./src/screens/ChangePassword";
+import PostDetail from "./src/screens/PostDetail";
 
 const Stack = createNativeStackNavigator();
 
@@ -27,11 +29,12 @@ const App = () => {
   return (
     <NavigationContainer style={styles.container}>
       <Stack.Navigator>
-        <Stack.Screen
+        {/* <Stack.Screen
           name="Profile"
           component={EditProfile}
           options={{ headerShown: false }}
-        />
+        /> */}
+
         <Stack.Screen
           name="BottomTab"
           component={BottomTab}
@@ -40,6 +43,21 @@ const App = () => {
         <Stack.Screen
           name="Splash"
           component={Splash}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="EditProfile"
+          component={EditProfile}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ChangePassword"
+          component={ChangePassword}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="PostDetail"
+          component={PostDetail}
           options={{ headerShown: false }}
         />
         <Stack.Screen
@@ -72,7 +90,6 @@ const App = () => {
           component={Login}
           options={{ headerShown: false }}
         />
-
         <Stack.Screen
           name="Signup"
           component={Signup}

@@ -33,15 +33,13 @@ const validate = () => {
 };
 
   return (
-    <KeyboardAvoidingView  style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-        <ArrowBtn onPress={() => navigation.goBack()}/>
-      </TouchableOpacity>
+    <KeyboardAvoidingView style={styles.container}>
+        <ArrowBtn onPress={() => navigation.goBack()} />
 
       <TitleComp
         title1="Create new account"
         title2="Create an account so you can continue."
-        style={{marginTop:16}}
+        style={{ marginTop: 16 }}
       />
       <View style={styles.splitContainer}>
         <MyTextInput
@@ -64,7 +62,12 @@ const validate = () => {
         value={number}
         keyboardType={"number-pad"}
       />
-      <View style={{flex:1, justifyContent: "flex-end"}}>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "flex-end",
+        }}
+      >
         <MyButton title="NEXT" onPress={validate} />
       </View>
     </KeyboardAvoidingView>
@@ -77,7 +80,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.themeColor,
-    paddingHorizontal: moderateScale(24),
+    padding: moderateScale(24),
     paddingTop: verticalScale(56),
   },
   splitContainer: {

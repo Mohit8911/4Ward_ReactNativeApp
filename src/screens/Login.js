@@ -48,7 +48,7 @@ const Login = ({navigation}) => {
 
   return (
     <KeyboardAvoidingView style={styles.container}>
-      <ArrowBtn onPress={()=> navigation.goBack()}/>
+      <ArrowBtn onPress={() => navigation.goBack()} />
       <TitleComp
         title1="Welcome back!"
         title2="We are happy to see. You can login to continue."
@@ -74,20 +74,13 @@ const Login = ({navigation}) => {
           <Text style={{ color: "#32C5FF" }}>Forgot Password?</Text>
         </TouchableOpacity>
       </View>
-      <View style={{ flex:1, justifyContent:'flex-end'}}>
-        <MyButton title="LOGIN" onPress={validate}  />
-        {/* <View
-          style={{
-            ...styles.splitContainer,
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Text style={styles.text1}>New here?</Text>
-          <TouchableOpacity onPress={() => navigation.navigate("Signup")}>
-            <Text style={styles.text2}> Sign Up</Text>
-          </TouchableOpacity>
-        </View> */}
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "flex-end",
+        }}
+      >
+        <MyButton title="LOGIN" onPress={validate} />
       </View>
     </KeyboardAvoidingView>
   );
@@ -99,7 +92,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.themeColor,
-    paddingHorizontal: moderateScale(24),
+    padding: moderateScale(24),
     paddingTop: verticalScale(56),
   },
   splitContainer: {

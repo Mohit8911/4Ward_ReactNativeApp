@@ -1,25 +1,35 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import colors from "../styles/colors";
 import { moderateScale, scale, verticalScale } from "../styles/scaling";
 import imagePath from "../constants/imagePath";
 
-const Profile = () => {
+const Profile = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Profile</Text>
-      <View style={styles.innerContainer}>
+      <TouchableOpacity
+        style={styles.innerContainer}
+        onPress={() => navigation.navigate("EditProfile")}
+      >
         <Image source={imagePath.ProfileUser} />
+
         <Text style={styles.text}>Edit Profile</Text>
-      </View>
-      <View style={styles.innerContainer}>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.innerContainer}
+        onPress={() => navigation.navigate("ChangePassword")}
+      >
         <Image source={imagePath.Key} />
         <Text style={styles.text}>Change Password</Text>
-      </View>
-      <View style={styles.innerContainer}>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("EditProfile")}
+        style={styles.innerContainer}
+      >
         <Image source={imagePath.Logout} style={styles.imgStyle} />
         <Text style={styles.text}>Signout</Text>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };

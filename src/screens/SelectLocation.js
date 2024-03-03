@@ -95,8 +95,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.themeColor,
-    padding: 24,
-    paddingTop: verticalScale(52),
+    padding: moderateScale(24),
+    paddingTop: verticalScale(56),
   },
   titleContainer: {
     flexDirection: "row",

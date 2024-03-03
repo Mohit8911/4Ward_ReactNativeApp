@@ -5,7 +5,7 @@ import imagePath from "../constants/imagePath";
 import { moderateScale, scale, verticalScale } from "../styles/scaling";
 import Card from "../components/Card";
 
-const Home = () => {
+const Home = ({navigation}) => {
   const [data, setData] = useState([
     {
       name: "Russell Gordon",
@@ -51,7 +51,7 @@ const Home = () => {
       <FlatList
         style={{ width: "100%", marginBottom: verticalScale(70) }}
         data={data}
-        renderItem={({ item }) => <Card item={item} />}
+        renderItem={({ item }) => <Card item={item} navigation={navigation} />}
         keyExtractor={(item, index) => index}
         showsVerticalScrollIndicator={false}
       />

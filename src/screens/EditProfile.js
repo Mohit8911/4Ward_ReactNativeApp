@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import {
-    Alert,
-    Image,
-    KeyboardAvoidingView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View
+  Alert,
+  Image,
+  KeyboardAvoidingView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import ArrowBtn from "../components/ArrowBtn";
 import MyButton from "../components/MyButton";
@@ -37,18 +37,16 @@ const EditProfile = ({ navigation }) => {
       return;
     }
 
-    navigation.navigate("SignupOtp", { number });
+    navigation.goBack();
   };
 
   return (
     <KeyboardAvoidingView style={styles.container}>
       <View style={styles.headingContainer}>
-        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-          <ArrowBtn onPress={() => navigation.goBack()} />
-        </TouchableOpacity>
+        <ArrowBtn onPress={() => navigation.goBack()} />
         <Text style={styles.title}>Edit Profile</Text>
       </View>
-      <View style={{ marginVertical: verticalScale(30)}}>
+      <View style={{ marginVertical: verticalScale(30) }}>
         <Image source={imagePath.dummyDp} style={styles.picStyle} />
         <Image source={imagePath.Edit} style={styles.editIconStyle} />
       </View>
@@ -57,21 +55,27 @@ const EditProfile = ({ navigation }) => {
           placeholder="First Name"
           setValue={setFName}
           value={fName}
-          style={{ width: "48%" }}
+          style={{ width: "48%", marginTop: verticalScale(10) }}
         />
         <MyTextInput
           placeholder="Last Name"
           setValue={setLName}
           value={lName}
-          style={{ width: "48%" }}
+          style={{ width: "48%", marginTop: verticalScale(10) }}
         />
       </View>
-      <MyTextInput placeholder="Email" setValue={setEmail} value={email} />
+      <MyTextInput
+        placeholder="Email"
+        setValue={setEmail}
+        value={email}
+        style={{ marginTop: verticalScale(10) }}
+      />
       <MyTextInput
         placeholder="Mobile Number"
         setValue={setNumber}
         value={number}
         keyboardType={"number-pad"}
+        style={{ marginTop: verticalScale(10) }}
       />
       <View style={styles.btnContainer}>
         <MyButton title="SAVE CHANGES" onPress={validate} />
@@ -123,6 +127,6 @@ const styles = StyleSheet.create({
   btnContainer: {
     flex: 1,
     justifyContent: "flex-end",
-    marginBottom: verticalScale(12),
+    marginBottom: verticalScale(10),
   },
 });
