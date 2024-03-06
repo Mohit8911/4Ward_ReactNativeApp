@@ -1,17 +1,26 @@
-import { StyleSheet, Text, View,ScrollView, KeyboardAvoidingView, Image, TouchableOpacity, Alert } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  KeyboardAvoidingView,
+  Image,
+  TouchableOpacity,
+  Alert,
+} from "react-native";
 import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import TitleComp from "../components/TitleComp";
-import MyTextInput from "../components/MyTextInput";
-import MyButton from "../components/MyButton";
-import Signup from './Signup';
-import Home from "./Home";
-import ArrowBtn from "../components/ArrowBtn";
-import colors from "../styles/colors";
-import BottomTab from "../Navigation/BottomTab";
-import { moderateScale, verticalScale } from "../styles/scaling";
+import TitleComp from "../../components/TitleComp";
+import MyTextInput from "../../components/MyTextInput";
+import MyButton from "../../components/MyButton";
+import Signup from "./Signup";
+import Home from "../MainScreens/Home";
+import ArrowBtn from "../../components/ArrowBtn";
+import colors from "../../styles/colors";
+import BottomTab from "../../Navigation/BottomTab";
+import { moderateScale, verticalScale } from "../../styles/scaling";
 
-const Login = ({navigation}) => {
+const Login = ({ navigation }) => {
   const [number, setNumber] = useState("");
   const [password, setPassword] = useState("");
   const [isPasswordSecure, setIsPasswordSecure] = useState(true);
@@ -22,9 +31,7 @@ const Login = ({navigation}) => {
       return;
     }
     if (number.trim().length != 10) {
-      Alert.alert(
-        "Mobile no. should contain only 10 digits.",
-      );
+      Alert.alert("Mobile no. should contain only 10 digits.");
       return;
     }
 
@@ -40,11 +47,10 @@ const Login = ({navigation}) => {
     } else if (!password.match(/[!@#/$%^&*-]/)) {
       Alert.alert("Password must contain at least one special character!");
       return;
-    }
-    else {
+    } else {
       navigation.navigate(BottomTab);
     }
-  }
+  };
 
   return (
     <KeyboardAvoidingView style={styles.container}>

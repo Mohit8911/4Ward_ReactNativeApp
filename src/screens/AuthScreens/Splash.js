@@ -1,14 +1,14 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import React, { useEffect } from "react";
-import { moderateScale, verticalScale } from "../styles/scaling";
-import colors from "../styles/colors";
-import imagePath from "../constants/imagePath";
+import { moderateScale, verticalScale } from "../../styles/scaling";
+import colors from "../../styles/colors";
+import imagePath from "../../constants/imagePath";
 import Tutorial from "./Tutorial";
 
 const Splash = ({ navigation }) => {
   useEffect(() => {
     setTimeout(() => navigation.navigate(Tutorial), 1000);
-    console.log('rendered')
+    console.log("rendered");
   }, []);
 
   return (

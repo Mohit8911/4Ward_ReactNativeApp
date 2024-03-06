@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
-import colors from "../styles/colors";
-import { moderateScale, scale, verticalScale } from "../styles/scaling";
-import imagePath from "../constants/imagePath";
+import colors from "../../styles/colors";
+import { moderateScale, scale, verticalScale } from "../../styles/scaling";
+import imagePath from "../../constants/imagePath";
 
 const Profile = ({ navigation }) => {
   return (
@@ -24,7 +24,7 @@ const Profile = ({ navigation }) => {
         <Text style={styles.text}>Change Password</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => navigation.navigate("EditProfile")}
+        onPress={() => navigation.navigate("LoginOptions")}
         style={styles.innerContainer}
       >
         <Image source={imagePath.Logout} style={styles.imgStyle} />
@@ -50,7 +50,6 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
   innerContainer: {
-    // backgroundColor: "white",
     flexDirection: "row",
     marginTop: verticalScale(32),
   },

@@ -1,40 +1,48 @@
-import { StyleSheet,View, Image, TouchableOpacity, Alert, KeyboardAvoidingView } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Image,
+  TouchableOpacity,
+  Alert,
+  KeyboardAvoidingView,
+} from "react-native";
 import React, { useState } from "react";
-import TitleComp from "../components/TitleComp";
-import MyTextInput from "../components/MyTextInput";
-import MyButton from "../components/MyButton";
-import Home from "./Home";
-import ArrowBtn from "../components/ArrowBtn";
-import colors from "../styles/colors";
-import { moderateScale, verticalScale } from "../styles/scaling";
+import TitleComp from "../../components/TitleComp";
+import MyTextInput from "../../components/MyTextInput";
+import MyButton from "../../components/MyButton";
+import Home from "../MainScreens/Home";
+import ArrowBtn from "../../components/ArrowBtn";
+import colors from "../../styles/colors";
+import { moderateScale, verticalScale } from "../../styles/scaling";
 
-const Signup = ({navigation}) => {
+const Signup = ({ navigation }) => {
   const [number, setNumber] = useState("");
   const [email, setEmail] = useState("");
   const [fName, setFName] = useState("");
   const [lName, setLName] = useState("");
 
-const validate = () => {
-  if (!number.trim() || !email.trim() || !lName.trim() || !fName.trim()) {
-    Alert.alert("All fields are required.");
-    return;
-  }
-  if (number.trim().length != 10) {
-    Alert.alert("Mobile no. should contain only 10 digits");
-    return;
-  }
-  const validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-  if (!email.match(validRegex)) {
-    Alert.alert("Enter a valid email address!");
-    return;
-  }
+  const validate = () => {
+    if (!number.trim() || !email.trim() || !lName.trim() || !fName.trim()) {
+      Alert.alert("All fields are required.");
+      return;
+    }
+    if (number.trim().length != 10) {
+      Alert.alert("Mobile no. should contain only 10 digits");
+      return;
+    }
+    const validRegex =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    if (!email.match(validRegex)) {
+      Alert.alert("Enter a valid email address!");
+      return;
+    }
 
-  navigation.navigate('SignupOtp', {number});
-};
+    navigation.navigate("SignupOtp", { number });
+  };
 
   return (
     <KeyboardAvoidingView style={styles.container}>
-        <ArrowBtn onPress={() => navigation.goBack()} />
+      <ArrowBtn onPress={() => navigation.goBack()} />
 
       <TitleComp
         title1="Create new account"

@@ -1,11 +1,10 @@
-import { StyleSheet, Text, View, Image, FlatList } from 'react-native'
-import React, { useState } from 'react'
-import colors from '../styles/colors';
-import { moderateScale, scale, verticalScale } from '../styles/scaling';
-import imagePath from '../constants/imagePath';
+import { StyleSheet, Text, View, Image, FlatList } from "react-native";
+import React, { useState } from "react";
+import colors from "../../styles/colors";
+import { moderateScale, scale, verticalScale } from "../../styles/scaling";
+import imagePath from "../../constants/imagePath";
 
 const Notifications = () => {
-
   const [notications, setNotications] = useState([
     { dp: imagePath.dummyDp, name: "Russell Gordon", time: 20 },
     { dp: imagePath.dummyDp, name: "Sara", time: 20 },
@@ -19,14 +18,14 @@ const Notifications = () => {
         <Image source={notication.dp} style={styles.dpStyle} />
         <View style={styles.userDetails}>
           <Text style={styles.name}>
-            <Text style={{ color: "red" }}>{notication.name}</Text> added a
-            new post.
+            <Text style={{ color: "red" }}>{notication.name}</Text> added a new
+            post.
           </Text>
           <Text style={styles.address}>{notication.time} min ago</Text>
         </View>
       </View>
     );
-  }
+  };
 
   return (
     <View style={styles.container}>
@@ -34,11 +33,10 @@ const Notifications = () => {
       <FlatList
         style={{ width: "100%", marginBottom: verticalScale(70) }}
         data={notications}
-        renderItem={({ item }) => renderNotifications(item) }
+        renderItem={({ item }) => renderNotifications(item)}
         keyExtractor={(item, index) => index}
         showsVerticalScrollIndicator={false}
       />
-      
     </View>
   );
 };
@@ -57,7 +55,7 @@ const styles = StyleSheet.create({
     lineHeight: verticalScale(16),
     fontSize: scale(16),
     fontWeight: "600",
-    marginVertical:verticalScale(8),
+    marginVertical: verticalScale(8),
   },
   headerContainer: {
     // backgroundColor: 'red',

@@ -7,13 +7,13 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import BottomTab from "../Navigation/BottomTab";
-import ArrowBtn from "../components/ArrowBtn";
-import MyButton from "../components/MyButton";
-import MyTextInput from "../components/MyTextInput";
-import TitleComp from "../components/TitleComp";
-import colors from "../styles/colors";
-import { moderateScale, scale, verticalScale } from "../styles/scaling";
+import BottomTab from "../../Navigation/BottomTab";
+import ArrowBtn from "../../components/ArrowBtn";
+import MyButton from "../../components/MyButton";
+import MyTextInput from "../../components/MyTextInput";
+import TitleComp from "../../components/TitleComp";
+import colors from "../../styles/colors";
+import { moderateScale, scale, verticalScale } from "../../styles/scaling";
 import { OtpInput } from "react-native-otp-entry";
 
 const SignupOtp = ({ navigation, route }) => {
@@ -28,8 +28,8 @@ const SignupOtp = ({ navigation, route }) => {
     if (otp.trim().length != 4) {
       Alert.alert("Otp should contain 4 digits.");
       return;
-    }else {
-      navigation.navigate('SetPassword');
+    } else {
+      navigation.navigate("SetPassword");
     }
   };
 

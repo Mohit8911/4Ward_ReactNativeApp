@@ -10,15 +10,15 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import TitleComp from "../components/TitleComp";
-import MyTextInput from "../components/MyTextInput";
-import MyButton from "../components/MyButton";
-import Signup from "./Signup";
+import TitleComp from "../../components/TitleComp";
+import MyTextInput from "../../components/MyTextInput";
+import MyButton from "../../components/MyButton";
+import Signup from "../AuthScreens/Signup";
 import Home from "./Home";
-import ArrowBtn from "../components/ArrowBtn";
-import colors from "../styles/colors";
-import BottomTab from "../Navigation/BottomTab";
-import { moderateScale, verticalScale } from "../styles/scaling";
+import ArrowBtn from "../../components/ArrowBtn";
+import colors from "../../styles/colors";
+import BottomTab from "../../Navigation/BottomTab";
+import { moderateScale, scale, verticalScale } from "../../styles/scaling";
 
 const Login = ({ navigation }) => {
   const [password, setPassword] = useState("");
@@ -48,17 +48,16 @@ const Login = ({ navigation }) => {
       Alert.alert("Confirm Password does not match with Password");
       return;
     } else {
-      navigation.navigate(BottomTab);
+      navigation.goBack();
     }
   };
 
   return (
     <KeyboardAvoidingView style={styles.container}>
-      <ArrowBtn onPress={() => navigation.goBack()} />
-      <TitleComp
-        title1="Set password"
-        title2="Create secure and unique password."
-      />
+      <View style={styles.headingContainer}>
+        <ArrowBtn onPress={() => navigation.goBack()} />
+        <Text style={styles.title}>Change Password</Text>
+      </View>
       <MyTextInput
         placeholder="Password"
         setValue={setPassword}
@@ -75,7 +74,7 @@ const Login = ({ navigation }) => {
       />
 
       <View style={{ flex: 1, justifyContent: "flex-end" }}>
-        <MyButton title="GET STARTED" onPress={validate} />
+        <MyButton title="SAVE" onPress={validate} />
       </View>
     </KeyboardAvoidingView>
   );
@@ -90,19 +89,17 @@ const styles = StyleSheet.create({
     padding: moderateScale(24),
     paddingTop: verticalScale(56),
   },
-  splitContainer: {
+
+  headingContainer: {
     flexDirection: "row",
-    justifyContent: "space-between",
     alignItems: "center",
-    marginTop: 16,
-    // marginBottom: 0,
-    height: 32,
+    marginBottom: moderateScale(32),
   },
-  text1: {
-    textAlign: "center",
+  title: {
     color: "white",
-  },
-  text2: {
-    color: "#32C5FF",
+    fontSize: scale(16),
+    lineHeight: verticalScale(16),
+    marginLeft: moderateScale(16),
+    fontWeight: "600",
   },
 });

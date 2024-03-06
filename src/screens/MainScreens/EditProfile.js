@@ -8,12 +8,12 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import ArrowBtn from "../components/ArrowBtn";
-import MyButton from "../components/MyButton";
-import MyTextInput from "../components/MyTextInput";
-import imagePath from "../constants/imagePath";
-import colors from "../styles/colors";
-import { moderateScale, scale, verticalScale } from "../styles/scaling";
+import ArrowBtn from "../../components/ArrowBtn";
+import MyButton from "../../components/MyButton";
+import MyTextInput from "../../components/MyTextInput";
+import imagePath from "../../constants/imagePath";
+import colors from "../../styles/colors";
+import { moderateScale, scale, verticalScale } from "../../styles/scaling";
 
 const EditProfile = ({ navigation }) => {
   const [number, setNumber] = useState("");

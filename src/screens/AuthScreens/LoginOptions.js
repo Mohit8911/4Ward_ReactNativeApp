@@ -1,11 +1,11 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
-import imagePath from "../constants/imagePath";
-import colors from "../styles/colors";
-import { moderateScale, scale, verticalScale } from "../styles/scaling";
-import MyButton from "../components/MyButton";
+import imagePath from "../../constants/imagePath";
+import colors from "../../styles/colors";
+import { moderateScale, scale, verticalScale } from "../../styles/scaling";
+import MyButton from "../../components/MyButton";
 
-const LoginOptions = ({navigation}) => {
+const LoginOptions = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Image source={imagePath.Logo} style={styles.image} />

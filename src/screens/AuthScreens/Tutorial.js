@@ -8,12 +8,12 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React, { useState } from "react";
-import colors from "../styles/colors";
+import colors from "../../styles/colors";
 
-import TutorialCard from "../components/TutorialCard";
-import { moderateScale, scale, verticalScale } from "../styles/scaling";
+import TutorialCard from "../../components/TutorialCard";
+import { moderateScale, scale, verticalScale } from "../../styles/scaling";
 
-const Tutorial = ({navigation}) => {
+const Tutorial = ({ navigation }) => {
   const data = [1, 2, 3];
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -23,7 +23,7 @@ const Tutorial = ({navigation}) => {
     const index = Math.round(scrollPosition / screenWidth);
     setActiveIndex(index);
   };
-  
+
   const renderDotIndicators = () => {
     return data.map((item, index) => (
       <View
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "white",
-    fontWeight: '500',
+    fontWeight: "500",
     fontSize: scale(15),
   },
   active: {

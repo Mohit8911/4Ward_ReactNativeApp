@@ -1,13 +1,13 @@
 import { StyleSheet, Text, View, Image } from "react-native";
 import React, { useState } from "react";
-import { moderateScale, scale, verticalScale } from "../styles/scaling";
-import colors from "../styles/colors";
-import ArrowBtn from "../components/ArrowBtn";
-import MyTextInput from "../components/MyTextInput";
-import imagePath from "../constants/imagePath";
-import MyButton from "../components/MyButton";
+import { moderateScale, scale, verticalScale } from "../../styles/scaling";
+import colors from "../../styles/colors";
+import ArrowBtn from "../../components/ArrowBtn";
+import MyTextInput from "../../components/MyTextInput";
+import imagePath from "../../constants/imagePath";
+import MyButton from "../../components/MyButton";
 
-const Post2 = ({navigation}) => {
+const Post2 = ({ navigation }) => {
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
 
@@ -27,8 +27,8 @@ const Post2 = ({navigation}) => {
       <MyTextInput
         placeholder="Write Description here..."
         setValue={setDescription}
-              value={description}
-              multiline={true}
+        value={description}
+        multiline={true}
         style={{ height: verticalScale(96), alignItems: "flex-start" }}
       />
       <MyTextInput
@@ -42,7 +42,7 @@ const Post2 = ({navigation}) => {
           justifyContent: "flex-end",
         }}
       >
-        <MyButton title="POST" onPress={()=>navigation.navigate('Home')} />
+        <MyButton title="POST" onPress={() => navigation.navigate("Home")} />
       </View>
     </View>
   );
@@ -80,8 +80,8 @@ const styles = StyleSheet.create({
     marginRight: moderateScale(16),
     borderRadius: moderateScale(8),
     resizeMode: "cover",
-      backgroundColor: "#4C4C4C",
-      justifyContent: "center",
+    backgroundColor: "#4C4C4C",
+    justifyContent: "center",
     alignItems: "center",
   },
 });

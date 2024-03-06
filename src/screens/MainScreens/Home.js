@@ -1,11 +1,11 @@
 import { StyleSheet, Text, View, Image, FlatList } from "react-native";
 import React, { useState } from "react";
-import colors from "../styles/colors";
-import imagePath from "../constants/imagePath";
-import { moderateScale, scale, verticalScale } from "../styles/scaling";
-import Card from "../components/Card";
+import colors from "../../styles/colors";
+import imagePath from "../../constants/imagePath";
+import { moderateScale, scale, verticalScale } from "../../styles/scaling";
+import Card from "../../components/Card";
 
-const Home = ({navigation}) => {
+const Home = ({ navigation }) => {
   const [data, setData] = useState([
     {
       name: "Russell Gordon",

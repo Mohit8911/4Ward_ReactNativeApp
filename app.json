@@ -1,28 +1,40 @@
 {
   "expo": {
-    "name": "AwesomeProject",
-    "slug": "AwesomeProject",
+    "name": "4ward",
+    "slug": "4ward",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "image": "./assets/logo.png",
+      "backgroundColor": "#2E2E2E",
+      "imageWidth": 200,
+      "imageHeight": 200
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "4ward",
+      "supportsTablet": true,
+      "config": {
+        "infoPlist": {
+          "NSCameraUsageDescription": "Your message explaining why you need access to the camera roll"
+        }
+      }
     },
     "android": {
+      "package": "4ward",
+      "config": {
+        "permissions": ["CAMERA_ROLL"]
+      },
+        "permissions": ["android.permissions.READ_MEDIA_IMAGES"],
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       }
     },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "web": {
       "favicon": "./assets/favicon.png"
     }

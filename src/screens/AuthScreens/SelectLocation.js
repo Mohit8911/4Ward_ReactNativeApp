@@ -6,14 +6,15 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View
+  View,
 } from "react-native";
-import BottomTab from "../Navigation/BottomTab";
-import MyButton from "../components/MyButton";
-import MyTextInput from "../components/MyTextInput";
-import TitleComp from "../components/TitleComp";
-import colors from "../styles/colors";
-import { moderateScale, scale, verticalScale } from "../styles/scaling";
+import BottomTab from "../../Navigation/BottomTab";
+import MyButton from "../../components/MyButton";
+import MyTextInput from "../../components/MyTextInput";
+import TitleComp from "../../components/TitleComp";
+import colors from "../../styles/colors";
+import { moderateScale, scale, verticalScale } from "../../styles/scaling";
+import imagePath from "../../constants/imagePath";
 
 const SelectLocation = ({ navigation }) => {
   const [data, setData] = useState([
@@ -31,15 +32,15 @@ const SelectLocation = ({ navigation }) => {
       Alert.alert("Please enter the address");
       return;
     } else {
-      navigation.navigate('BottomTab');
+      navigation.navigate("BottomTab");
     }
-    };
-    
-    const handleTickPress = (index) => {
-        const newData = [...data];
-        newData[index].isSelected = !newData[index].isSelected;
-        setData(newData);
-    }
+  };
+
+  const handleTickPress = (index) => {
+    const newData = [...data];
+    newData[index].isSelected = !newData[index].isSelected;
+    setData(newData);
+  };
 
   return (
     <KeyboardAvoidingView style={styles.container}>
@@ -62,24 +63,24 @@ const SelectLocation = ({ navigation }) => {
         setValue={setAddress}
         value={address}
       />
-        <Text style={styles.text2}>Suggestions</Text>
+      <Text style={styles.text2}>Suggestions</Text>
       {/* <View> */}
-        {data.map((item,index) => (
-          <View style={styles.splitContainer} key={index}>
-            <TouchableOpacity>
-              <Text style={{ color: "white" }}>{item.address}</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={()=>handleTickPress(index)}>
-              <Image
-                source={
-                  item.isSelected
-                    ? require("../assets/images/ic_blue_tick.png")
-                    : require("../assets/images/ic_grey_tick.png")
-                }
-              />
-            </TouchableOpacity>
-          </View>
-        ))}
+      {data.map((item, index) => (
+        <View style={styles.splitContainer} key={index}>
+          <TouchableOpacity>
+            <Text style={{ color: "white" }}>{item.address}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => handleTickPress(index)}>
+            <Image
+              source={
+                item.isSelected
+                  ? imagePath.BlueTick
+                  : imagePath.GreyTick
+              }
+            />
+          </TouchableOpacity>
+        </View>
+      ))}
       {/* </View> */}
 
       <View style={{ flex: 1, justifyContent: "flex-end" }}>

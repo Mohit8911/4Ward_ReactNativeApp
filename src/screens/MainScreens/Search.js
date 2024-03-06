@@ -4,11 +4,11 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View
+  View,
 } from "react-native";
-import MyTextInput from "../components/MyTextInput";
-import colors from "../styles/colors";
-import { scale, verticalScale } from "../styles/scaling";
+import MyTextInput from "../../components/MyTextInput";
+import colors from "../../styles/colors";
+import { scale, verticalScale } from "../../styles/scaling";
 
 const Search = ({ navigation }) => {
   const [data, setData] = useState([

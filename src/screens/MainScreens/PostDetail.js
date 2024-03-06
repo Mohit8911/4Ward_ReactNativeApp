@@ -7,9 +7,9 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React from "react";
-import { moderateScale, scale, verticalScale } from "../styles/scaling";
-import imagePath from "../constants/imagePath";
-import MyButton from "../components/MyButton";
+import { moderateScale, scale, verticalScale } from "../../styles/scaling";
+import imagePath from "../../constants/imagePath";
+import MyButton from "../../components/MyButton";
 
 const PostDetail = ({ navigation, route }) => {
   const { item } = route.params;

@@ -1,18 +1,21 @@
-import { StyleSheet, Text, View, Image } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
-import Home from "../screens/Home";
-import Settings from "../screens/Notifications";
-import Notifications from "../screens/Notifications";
-import { StatusBar } from "expo-status-bar";
+import { Image, StyleSheet } from "react-native";
 import imagePath from "../constants/imagePath";
+import AddPost from "../screens/MainScreens/AddPost";
+import Home from "../screens/MainScreens/Home";
+import Notifications from "../screens/MainScreens/Notifications";
+import Profile from "../screens/MainScreens/Profile";
+import Search from "../screens/MainScreens/Search";
 import { moderateScale, verticalScale } from "../styles/scaling";
-import Search from "../screens/Search";
-import Profile from "../screens/Profile";
 
 const Tab = createBottomTabNavigator();
 
 const BottomTab = () => {
+  const addStyle = (focused) => {
+    return focused ? { tintColor: "red" } : {};
+  };
+
   return (
     <Tab.Navigator
       screenOptions={{
@@ -22,9 +25,8 @@ const BottomTab = () => {
           backgroundColor: "#4C4C4C",
           height: verticalScale(70),
           borderRadius: moderateScale(8),
-          borderColor:'transparent'
+          borderColor: "transparent",
         },
-
         initialRouteName: "Home",
         tabBarShowLabel: false,
         headerShown: false,
@@ -34,8 +36,11 @@ const BottomTab = () => {
         name="Home"
         component={Home}
         options={{
-          tabBarIcon: () => (
-            <Image source={imagePath.Home} style={styles.tabBarIcon} />
+          tabBarIcon: ({ focused }) => (
+            <Image
+              source={imagePath.Home}
+              style={{ ...styles.tabBarIcon, ...addStyle(focused) }}
+            />
           ),
         }}
       />
@@ -43,17 +48,23 @@ const BottomTab = () => {
         name="Search"
         component={Search}
         options={{
-          tabBarIcon: () => (
-            <Image source={imagePath.Search} style={styles.tabBarIcon} />
+          tabBarIcon: ({ focused }) => (
+            <Image
+              source={imagePath.Search}
+              style={{ ...styles.tabBarIcon, ...addStyle(focused) }}
+            />
           ),
         }}
       />
       <Tab.Screen
         name="AddPost"
-        component={Notifications}
+        component={AddPost}
         options={{
-          tabBarIcon: () => (
-            <Image source={imagePath.Add} style={styles.tabBarIcon} />
+          tabBarIcon: ({ focused }) => (
+            <Image
+              source={imagePath.Add}
+              style={{ ...styles.tabBarIcon, ...addStyle(focused) }}
+            />
           ),
         }}
       />
@@ -61,8 +72,11 @@ const BottomTab = () => {
         name="Notifications"
         component={Notifications}
         options={{
-          tabBarIcon: () => (
-            <Image source={imagePath.Notifications} style={styles.tabBarIcon} />
+          tabBarIcon: ({ focused }) => (
+            <Image
+              source={imagePath.Notifications}
+              style={{ ...styles.tabBarIcon, ...addStyle(focused) }}
+            />
           ),
         }}
       />
@@ -70,8 +84,11 @@ const BottomTab = () => {
         name="Profile"
         component={Profile}
         options={{
-          tabBarIcon: () => (
-            <Image source={imagePath.User} style={styles.tabBarIcon} />
+          tabBarIcon: ({ focused }) => (
+            <Image
+              source={imagePath.User}
+              style={{ ...styles.tabBarIcon, ...addStyle(focused) }}
+            />
           ),
         }}
       />
