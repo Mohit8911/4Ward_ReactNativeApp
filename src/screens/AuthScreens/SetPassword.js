@@ -19,6 +19,7 @@ import colors from "../../styles/colors";
 import BottomTab from "../../Navigation/BottomTab";
 import { moderateScale, verticalScale } from "../../styles/scaling";
 import MainStack from "../../Navigation/MainStack";
+import actions from "../../redux/actions";
 
 const Login = ({ navigation }) => {
   const [password, setPassword] = useState("");
@@ -48,7 +49,8 @@ const Login = ({ navigation }) => {
       Alert.alert("Confirm Password does not match with Password");
       return;
     } else {
-      navigation.navigate(MainStack);
+      // navigation.navigate(MainStack);
+      actions.login();
     }
   };
 

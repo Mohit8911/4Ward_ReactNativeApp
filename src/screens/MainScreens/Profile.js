@@ -3,6 +3,7 @@ import React from "react";
 import colors from "../../styles/colors";
 import { moderateScale, scale, verticalScale } from "../../styles/scaling";
 import imagePath from "../../constants/imagePath";
+import actions from "../../redux/actions";
 
 const Profile = ({ navigation }) => {
   return (
@@ -24,7 +25,7 @@ const Profile = ({ navigation }) => {
         <Text style={styles.text}>Change Password</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => navigation.navigate("LoginOptions")}
+        onPress={() => actions.logout()}
         style={styles.innerContainer}
       >
         <Image source={imagePath.Logout} style={styles.imgStyle} />

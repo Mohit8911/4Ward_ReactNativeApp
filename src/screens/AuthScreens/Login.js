@@ -19,6 +19,7 @@ import ArrowBtn from "../../components/ArrowBtn";
 import colors from "../../styles/colors";
 import BottomTab from "../../Navigation/BottomTab";
 import { moderateScale, verticalScale } from "../../styles/scaling";
+import actions from "../../redux/actions";
 
 const Login = ({ navigation }) => {
   const [number, setNumber] = useState("");
@@ -48,7 +49,8 @@ const Login = ({ navigation }) => {
       Alert.alert("Password must contain at least one special character!");
       return;
     } else {
-      navigation.navigate(BottomTab);
+      // navigation.navigate(BottomTab);
+      actions.login();
     }
   };
 
