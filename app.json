@@ -13,20 +13,9 @@
       "imageHeight": 200
     },
     "ios": {
-      "bundleIdentifier": "4ward",
-      "supportsTablet": true,
-      "config": {
-        "infoPlist": {
-          "NSCameraUsageDescription": "Your message explaining why you need access to the camera roll"
-        }
-      }
+      "supportsTablet": true
     },
     "android": {
-      "package": "4ward",
-      "config": {
-        "permissions": ["CAMERA_ROLL"]
-      },
-        "permissions": ["android.permissions.READ_MEDIA_IMAGES"],
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"

@@ -5,40 +5,65 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
+  Button,
+  Text,
 } from "react-native";
-import CameraRoll from "@react-native-community/cameraroll";
+import colors from "../../styles/colors";
+import { moderateScale, verticalScale } from "../../styles/scaling";
+import * as ImagePicker from "expo-image-picker";
 
-export default function AddPost() {
-  const [photos, setPhotos] = useState([]);
+export default function AddPost({ navigation }) {
+  const [images, setImages] = useState([]);
 
-  useEffect(() => {
-    fetchPhotos();
-  }, []);
+  const handleBackPress = () => {
+    setImages([]);
+    navigation.navigate("AddPost");
+  }
 
-  const fetchPhotos = async () => {
-    try {
-      // CameraRoll.getPhotos();
-      console.log({...CameraRoll})
-      CameraRoll.save('file:///C:/Users/m8911/Pictures/Screenshot%202021-08-16%20153855.jpg', {  album:"1" });
-      console.log(CameraRoll);
-      const { edges } = await CameraRoll.getPhotos({ album: 1 });
-      const photosArray = edges.map((edge) => edge.node.image.uri);
-      setPhotos(photosArray);
-    } catch (error) {
-       
-      console.log("Error getting photos: ", error);
+  if (images.length != 0) {
+    navigation.navigate("Post2", { images, handleBackPress });
+  }
+  console.log("hi");
+  const pickImage = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 4],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.canceled) {
+      const image = result.assets[0].uri;
+      setImages([...images, image]);
+      
+    }
+  };
+
+  const openCamera = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchCameraAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 4],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.canceled) {
+      const image = result.assets[0].uri;
+      setImages([...images, image]);
+      
     }
   };
 
   return (
     <View style={styles.container}>
-      <ScrollView contentContainerStyle={styles.photoGrid}>
-        {photos.map((photo, index) => (
-          <TouchableOpacity key={index}>
-            <Image source={{ uri: photo }} style={styles.photo} />
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
+      <Button title="Select photo" onPress={pickImage} />
+      <Button title="Open camera" onPress={openCamera} />
     </View>
   );
 }
@@ -46,18 +71,9 @@ export default function AddPost() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#F5FCFF",
-  },
-  photoGrid: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "center",
-  },
-  photo: {
-    width: 100,
-    height: 100,
-    margin: 5,
+    backgroundColor: colors.themeColor,
+    paddingHorizontal: moderateScale(24),
+    paddingTop: verticalScale(50),
+    justifyContent: "space-around",
   },
 });

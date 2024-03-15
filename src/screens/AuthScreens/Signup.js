@@ -1,17 +1,14 @@
+import React, { useState } from "react";
 import {
-  StyleSheet,
-  View,
-  Image,
-  TouchableOpacity,
   Alert,
   KeyboardAvoidingView,
+  StyleSheet,
+  View
 } from "react-native";
-import React, { useState } from "react";
-import TitleComp from "../../components/TitleComp";
-import MyTextInput from "../../components/MyTextInput";
-import MyButton from "../../components/MyButton";
-import Home from "../MainScreens/Home";
 import ArrowBtn from "../../components/ArrowBtn";
+import MyButton from "../../components/MyButton";
+import MyTextInput from "../../components/MyTextInput";
+import TitleComp from "../../components/TitleComp";
 import colors from "../../styles/colors";
 import { moderateScale, verticalScale } from "../../styles/scaling";
 

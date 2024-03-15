@@ -1,25 +1,17 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-  KeyboardAvoidingView,
-  Image,
-  TouchableOpacity,
-  Alert,
-} from "react-native";
 import React, { useState } from "react";
-import TitleComp from "../../components/TitleComp";
-import MyTextInput from "../../components/MyTextInput";
-import MyButton from "../../components/MyButton";
-import Signup from "./Signup";
-import Home from "../MainScreens/Home";
+import {
+  Alert,
+  KeyboardAvoidingView,
+  StyleSheet,
+  View
+} from "react-native";
 import ArrowBtn from "../../components/ArrowBtn";
-import colors from "../../styles/colors";
-import BottomTab from "../../Navigation/BottomTab";
-import { moderateScale, verticalScale } from "../../styles/scaling";
-import MainStack from "../../Navigation/MainStack";
+import MyButton from "../../components/MyButton";
+import MyTextInput from "../../components/MyTextInput";
+import TitleComp from "../../components/TitleComp";
 import actions from "../../redux/actions";
+import colors from "../../styles/colors";
+import { moderateScale, verticalScale } from "../../styles/scaling";
 
 const Login = ({ navigation }) => {
   const [password, setPassword] = useState("");
@@ -49,7 +41,6 @@ const Login = ({ navigation }) => {
       Alert.alert("Confirm Password does not match with Password");
       return;
     } else {
-      // navigation.navigate(MainStack);
       actions.login();
     }
   };

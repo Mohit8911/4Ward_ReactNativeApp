@@ -1,25 +1,19 @@
+import React, { useState } from "react";
 import {
+  Alert,
+  KeyboardAvoidingView,
   StyleSheet,
   Text,
-  View,
-  ScrollView,
-  KeyboardAvoidingView,
-  Image,
   TouchableOpacity,
-  Alert,
+  View
 } from "react-native";
-import React, { useState } from "react";
-import { StatusBar } from "expo-status-bar";
-import TitleComp from "../../components/TitleComp";
-import MyTextInput from "../../components/MyTextInput";
-import MyButton from "../../components/MyButton";
-import Signup from "./Signup";
-import Home from "../MainScreens/Home";
 import ArrowBtn from "../../components/ArrowBtn";
-import colors from "../../styles/colors";
-import BottomTab from "../../Navigation/BottomTab";
-import { moderateScale, verticalScale } from "../../styles/scaling";
+import MyButton from "../../components/MyButton";
+import MyTextInput from "../../components/MyTextInput";
+import TitleComp from "../../components/TitleComp";
 import actions from "../../redux/actions";
+import colors from "../../styles/colors";
+import { moderateScale, verticalScale } from "../../styles/scaling";
 
 const Login = ({ navigation }) => {
   const [number, setNumber] = useState("");
@@ -49,7 +43,6 @@ const Login = ({ navigation }) => {
       Alert.alert("Password must contain at least one special character!");
       return;
     } else {
-      // navigation.navigate(BottomTab);
       actions.login();
     }
   };

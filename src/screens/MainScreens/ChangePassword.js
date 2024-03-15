@@ -1,23 +1,15 @@
+import React, { useState } from "react";
 import {
+  Alert,
+  KeyboardAvoidingView,
   StyleSheet,
   Text,
-  View,
-  ScrollView,
-  KeyboardAvoidingView,
-  Image,
-  TouchableOpacity,
-  Alert,
+  View
 } from "react-native";
-import React, { useState } from "react";
-import { StatusBar } from "expo-status-bar";
-import TitleComp from "../../components/TitleComp";
-import MyTextInput from "../../components/MyTextInput";
-import MyButton from "../../components/MyButton";
-import Signup from "../AuthScreens/Signup";
-import Home from "./Home";
 import ArrowBtn from "../../components/ArrowBtn";
+import MyButton from "../../components/MyButton";
+import MyTextInput from "../../components/MyTextInput";
 import colors from "../../styles/colors";
-import BottomTab from "../../Navigation/BottomTab";
 import { moderateScale, scale, verticalScale } from "../../styles/scaling";
 
 const Login = ({ navigation }) => {

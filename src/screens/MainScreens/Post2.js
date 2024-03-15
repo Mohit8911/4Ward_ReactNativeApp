@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View, Image } from "react-native";
-import React, { useState } from "react";
+import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity, FlatList } from "react-native";
+import React, { useEffect, useState } from "react";
 import { moderateScale, scale, verticalScale } from "../../styles/scaling";
 import colors from "../../styles/colors";
 import ArrowBtn from "../../components/ArrowBtn";
@@ -7,21 +7,28 @@ import MyTextInput from "../../components/MyTextInput";
 import imagePath from "../../constants/imagePath";
 import MyButton from "../../components/MyButton";
 
-const Post2 = ({ navigation }) => {
+const Post2 = ({ navigation, route }) => {
+  
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
+const { images,handleBackPress } = route.params;
 
   return (
     <View style={styles.container}>
       <View style={styles.headingContainer}>
-        <ArrowBtn onPress={() => navigation.goBack()} />
+        <ArrowBtn onPress={() => handleBackPress()} />
         <Text style={styles.title}>Add info</Text>
       </View>
       <View style={styles.splitContainer}>
-        <Image style={styles.imgStyle} source={imagePath.dummySnap}></Image>
-        <View style={styles.imgStyle}>
+        {images.map((image, index) => (
+          <Image source={{ uri: image }} style={styles.imgStyle} key={index} />
+        ))}
+        <TouchableOpacity
+          style={styles.imgStyle}
+          onPress={() => navigation.goBack()}
+        >
           <Image source={imagePath.Plus}></Image>
-        </View>
+        </TouchableOpacity>
       </View>
 
       <MyTextInput
@@ -72,13 +79,15 @@ const styles = StyleSheet.create({
   splitContainer: {
     flexDirection: "row",
     alignItems: "center",
+    flexWrap: 'wrap',
     // marginTop: verticalScale(16),
   },
   imgStyle: {
     height: verticalScale(64),
     width: moderateScale(64),
     marginRight: moderateScale(16),
-    borderRadius: moderateScale(8),
+    marginBottom: verticalScale(8),
+    borderRadius: moderateScale(6),
     resizeMode: "cover",
     backgroundColor: "#4C4C4C",
     justifyContent: "center",

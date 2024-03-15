@@ -4,17 +4,14 @@ import {
   KeyboardAvoidingView,
   StyleSheet,
   Text,
-  TouchableOpacity,
-  View,
+  View
 } from "react-native";
-import BottomTab from "../../Navigation/BottomTab";
+import { OtpInput } from "react-native-otp-entry";
 import ArrowBtn from "../../components/ArrowBtn";
 import MyButton from "../../components/MyButton";
-import MyTextInput from "../../components/MyTextInput";
 import TitleComp from "../../components/TitleComp";
 import colors from "../../styles/colors";
 import { moderateScale, scale, verticalScale } from "../../styles/scaling";
-import { OtpInput } from "react-native-otp-entry";
 
 const SignupOtp = ({ navigation, route }) => {
   const [otp, setOtp] = useState("");
