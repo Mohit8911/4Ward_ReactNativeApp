@@ -8,15 +8,17 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import BottomTab from "../../Navigation/BottomTab";
 import MyButton from "../../components/MyButton";
 import MyTextInput from "../../components/MyTextInput";
 import TitleComp from "../../components/TitleComp";
 import colors from "../../styles/colors";
 import { moderateScale, scale, verticalScale } from "../../styles/scaling";
 import imagePath from "../../constants/imagePath";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../../services/firebaseConfig";
+import actions from "../../redux/actions";
 
-const SelectLocation = ({ navigation }) => {
+const SelectLocation = ({ navigation, route }) => {
   const [data, setData] = useState([
     { address: "Sector 55, Chandigarh", isSelected: true },
     { address: "Sector 22, Chandigarh", isSelected: false },
@@ -25,14 +27,27 @@ const SelectLocation = ({ navigation }) => {
     { address: "Sector 40, Chandigarh", isSelected: false },
     { address: "Sector 67, Mohali", isSelected: false },
   ]);
-  const [address, setAddress] = useState("");
+  const [address, setAddress] = useState("Sector 28");
+
+  const saveUserData = () => {
+    setDoc(doc(db, "users", route.params.number), {
+      ...route.params,
+      address,
+    })
+      .then(() => {
+        actions.login();
+        navigation.navigate("BottomTab");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const validate = () => {
     if (!address.trim()) {
       Alert.alert("Please enter the address");
-      return;
     } else {
-      navigation.navigate("BottomTab");
+      saveUserData();
     }
   };
 
@@ -72,11 +87,7 @@ const SelectLocation = ({ navigation }) => {
           </TouchableOpacity>
           <TouchableOpacity onPress={() => handleTickPress(index)}>
             <Image
-              source={
-                item.isSelected
-                  ? imagePath.BlueTick
-                  : imagePath.GreyTick
-              }
+              source={item.isSelected ? imagePath.BlueTick : imagePath.GreyTick}
             />
           </TouchableOpacity>
         </View>

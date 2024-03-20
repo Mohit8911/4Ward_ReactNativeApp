@@ -5,20 +5,35 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View
+  View,
 } from "react-native";
 import ArrowBtn from "../../components/ArrowBtn";
 import MyButton from "../../components/MyButton";
 import MyTextInput from "../../components/MyTextInput";
 import TitleComp from "../../components/TitleComp";
+import { doc, getDoc } from "firebase/firestore";
 import actions from "../../redux/actions";
 import colors from "../../styles/colors";
 import { moderateScale, verticalScale } from "../../styles/scaling";
+import { db } from "../../services/firebaseConfig";
 
 const Login = ({ navigation }) => {
   const [number, setNumber] = useState("");
   const [password, setPassword] = useState("");
   const [isPasswordSecure, setIsPasswordSecure] = useState(true);
+
+  const handleLogin = async (number, password) => {
+    const docRef = doc(db, "users", number);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      if (docSnap.data().password == password) {
+        actions.login();
+      } else Alert.alert("Wrong Password!");
+    } else {
+      Alert.alert("Mobile Number not registered!");
+    }
+  };
 
   const validate = () => {
     if (!number.trim() || !password.trim()) {
@@ -43,7 +58,8 @@ const Login = ({ navigation }) => {
       Alert.alert("Password must contain at least one special character!");
       return;
     } else {
-      actions.login();
+      handleLogin(number, password);
+      // actions.login();
     }
   };
 

@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import {
-  Alert,
-  KeyboardAvoidingView,
-  StyleSheet,
-  View
-} from "react-native";
+import { Alert, KeyboardAvoidingView, StyleSheet, View } from "react-native";
 import ArrowBtn from "../../components/ArrowBtn";
 import MyButton from "../../components/MyButton";
 import MyTextInput from "../../components/MyTextInput";
@@ -12,12 +7,16 @@ import TitleComp from "../../components/TitleComp";
 import actions from "../../redux/actions";
 import colors from "../../styles/colors";
 import { moderateScale, verticalScale } from "../../styles/scaling";
+import { doc, setDoc } from "firebase/firestore";
 
-const Login = ({ navigation }) => {
+const Login = ({ navigation, route }) => {
   const [password, setPassword] = useState("");
   const [isPasswordSecure, setIsPasswordSecure] = useState(true);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isCPasswordSecure, setIsCPasswordSecure] = useState(true);
+
+
+
 
   const validate = () => {
     if (!confirmPassword.trim() || !password.trim()) {
@@ -41,7 +40,7 @@ const Login = ({ navigation }) => {
       Alert.alert("Confirm Password does not match with Password");
       return;
     } else {
-      actions.login();
+      navigation.navigate("SelectLocation", { ...route.params, password });
     }
   };
 

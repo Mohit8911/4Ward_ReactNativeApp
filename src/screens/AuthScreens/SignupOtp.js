@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Alert,
   KeyboardAvoidingView,
   StyleSheet,
   Text,
-  View
+  View,
+  TouchableOpacity,
 } from "react-native";
 import { OtpInput } from "react-native-otp-entry";
 import ArrowBtn from "../../components/ArrowBtn";
@@ -12,21 +13,58 @@ import MyButton from "../../components/MyButton";
 import TitleComp from "../../components/TitleComp";
 import colors from "../../styles/colors";
 import { moderateScale, scale, verticalScale } from "../../styles/scaling";
+import { app, auth } from "../../services/firebaseConfig";
+import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+import { FirebaseRecaptchaVerifierModal } from "expo-firebase-recaptcha";
 
 const SignupOtp = ({ navigation, route }) => {
   const [otp, setOtp] = useState("");
-  const { number } = route.params;
+  const [count, setCount] = useState(15);
+  const [result, setResult] = useState({});
+  const [resendBtnVisible, setResendBtnVisible] = useState(false);
+
+  useEffect(() => {
+    sendOtp(route.params.number);
+    const interval = setInterval(() => {
+      setCount((count) => count - 1);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const recaptchaVerifier = useRef(null);
+
+  const sendOtp = async (number) => {
+    const newResult = await signInWithPhoneNumber(
+      auth,
+      "+91" + number,
+      recaptchaVerifier.current
+    );
+    setResult(newResult);
+    setCount(15);
+  };
+
+  const verifyCode = async (otp) => {
+    try {
+      const userCredential = await result.confirm(otp);
+      if (userCredential) {
+        navigation.navigate("SetPassword", route.params);
+      }
+    } catch (error) {
+      Alert.alert("Wrong Code entered!");
+    }
+  };
 
   const validate = () => {
     if (!otp.trim()) {
       Alert.alert("Otp is required.");
       return;
     }
-    if (otp.trim().length != 4) {
+    if (otp.trim().length != 6) {
       Alert.alert("Otp should contain 4 digits.");
       return;
     } else {
-      navigation.navigate("SetPassword");
+      verifyCode(otp);
     }
   };
 
@@ -34,12 +72,12 @@ const SignupOtp = ({ navigation, route }) => {
     <KeyboardAvoidingView style={styles.container}>
       <ArrowBtn onPress={() => navigation.goBack()} />
       <TitleComp
-        title1={`Enter the 4-digit code sent to you at ${number}`}
+        title1={`Enter the 6-digit code sent to you at ${route.params.number}`}
         title2="Edit my mobile number"
         style2={{ color: "#32C5FF" }}
       />
       <OtpInput
-        numberOfDigits={4}
+        numberOfDigits={6}
         focusColor="white"
         focusStickBlinkingDuration={500}
         onTextChange={(text) => setOtp(text)}
@@ -53,9 +91,21 @@ const SignupOtp = ({ navigation, route }) => {
       />
 
       <View style={{ flex: 1, justifyContent: "flex-end" }}>
-        <Text style={styles.text}>Resend code in 0:14</Text>
+        {count < 0 ? (
+          <TouchableOpacity
+            onPress={() => sendOtp(route.params.number)}
+          >
+            <Text style={styles.text}>Resend Otp</Text>
+          </TouchableOpacity>
+        ) : (
+          <Text style={styles.text}>Resend code in 0:{count}</Text>
+        )}
         <MyButton title="VERIFY" onPress={validate} />
       </View>
+      <FirebaseRecaptchaVerifierModal
+        ref={recaptchaVerifier}
+        firebaseConfig={app.options}
+      />
     </KeyboardAvoidingView>
   );
 };
@@ -84,7 +134,7 @@ const styles = StyleSheet.create({
     borderRadius: moderateScale(8),
     height: verticalScale(48),
     width: moderateScale(40),
-    marginRight: moderateScale(16),
+    marginRight: moderateScale(13),
   },
   pinCodeText: {
     color: "white",

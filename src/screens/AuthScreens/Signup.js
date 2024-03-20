@@ -1,22 +1,34 @@
-import React, { useState } from "react";
-import {
-  Alert,
-  KeyboardAvoidingView,
-  StyleSheet,
-  View
-} from "react-native";
+import React, { useState, useRef } from "react";
+import { Alert, KeyboardAvoidingView, StyleSheet, View } from "react-native";
 import ArrowBtn from "../../components/ArrowBtn";
 import MyButton from "../../components/MyButton";
 import MyTextInput from "../../components/MyTextInput";
 import TitleComp from "../../components/TitleComp";
 import colors from "../../styles/colors";
 import { moderateScale, verticalScale } from "../../styles/scaling";
+import { signInWithPhoneNumber } from "firebase/auth";
+import { app, auth, db } from "../../services/firebaseConfig";
+import { FirebaseRecaptchaVerifierModal } from "expo-firebase-recaptcha";
+import { doc, getDoc } from "firebase/firestore";
 
 const Signup = ({ navigation }) => {
   const [number, setNumber] = useState("");
   const [email, setEmail] = useState("");
   const [fName, setFName] = useState("");
   const [lName, setLName] = useState("");
+
+  const recaptchaVerifier = useRef(null);
+
+  const handleSignup = async (number) => {
+    const docRef = doc(db, "users", number);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      Alert.alert("Phone Number already exists");
+      return;
+    }
+    navigation.navigate("SignupOtp", { fName, lName, email, number });
+  };
 
   const validate = () => {
     if (!number.trim() || !email.trim() || !lName.trim() || !fName.trim()) {
@@ -33,8 +45,7 @@ const Signup = ({ navigation }) => {
       Alert.alert("Enter a valid email address!");
       return;
     }
-
-    navigation.navigate("SignupOtp", { number });
+    handleSignup(number);
   };
 
   return (
@@ -66,6 +77,11 @@ const Signup = ({ navigation }) => {
         setValue={setNumber}
         value={number}
         keyboardType={"number-pad"}
+      />
+      {/* <View id="recaptcha"></View> */}
+      <FirebaseRecaptchaVerifierModal
+        ref={recaptchaVerifier}
+        firebaseConfig={app.options}
       />
       <View
         style={{
