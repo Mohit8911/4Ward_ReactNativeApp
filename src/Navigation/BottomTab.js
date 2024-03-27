@@ -8,6 +8,8 @@ import Notifications from "../screens/MainScreens/Notifications";
 import Profile from "../screens/MainScreens/Profile";
 import Search from "../screens/MainScreens/Search";
 import { moderateScale, verticalScale } from "../styles/scaling";
+import ToggleVideo from "../screens/MainScreens/ToggleVideo";
+import Reels from "../screens/MainScreens/Reels";
 
 const Tab = createBottomTabNavigator();
 
@@ -46,7 +48,7 @@ const BottomTab = () => {
       />
       <Tab.Screen
         name="Search"
-        component={Search}
+        component={ToggleVideo}
         options={{
           tabBarIcon: ({ focused }) => (
             <Image
@@ -70,7 +72,7 @@ const BottomTab = () => {
       />
       <Tab.Screen
         name="Notifications"
-        component={Notifications}
+        component={Reels}
         options={{
           tabBarIcon: ({ focused }) => (
             <Image
