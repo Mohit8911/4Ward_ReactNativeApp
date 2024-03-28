@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import React from "react";
+import React, { useState } from "react";
 import { Image, StyleSheet } from "react-native";
 import imagePath from "../constants/imagePath";
 import AddPost from "../screens/MainScreens/AddPost";
@@ -14,9 +14,18 @@ import Reels from "../screens/MainScreens/Reels";
 const Tab = createBottomTabNavigator();
 
 const BottomTab = () => {
+  const [isReelTab, setIsReelTab] = useState(false);
+  const [isVideoTab, setIsVideoTab] = useState(false);
+
   const addStyle = (focused) => {
     return focused ? { tintColor: "red" } : {};
   };
+
+  const setBoth = (a, b) => {
+    console.log("set")
+    setIsReelTab(a);
+    setIsVideoTab(b);
+  }
 
   return (
     <Tab.Navigator
@@ -32,11 +41,14 @@ const BottomTab = () => {
         initialRouteName: "Home",
         tabBarShowLabel: false,
         headerShown: false,
+        // unmountOnBlur: true,
+        // freezeOnBlur: true,
       }}
     >
       <Tab.Screen
         name="Home"
         component={Home}
+        tabPress={console.log("Press home")}
         options={{
           tabBarIcon: ({ focused }) => (
             <Image
@@ -49,6 +61,7 @@ const BottomTab = () => {
       <Tab.Screen
         name="Search"
         component={ToggleVideo}
+        tabPress={setBoth}
         options={{
           tabBarIcon: ({ focused }) => (
             <Image
@@ -61,6 +74,7 @@ const BottomTab = () => {
       <Tab.Screen
         name="AddPost"
         component={AddPost}
+        tabPress={() => setBoth(false, false)}
         options={{
           tabBarIcon: ({ focused }) => (
             <Image
@@ -73,6 +87,7 @@ const BottomTab = () => {
       <Tab.Screen
         name="Notifications"
         component={Reels}
+        tabPress={() => setBoth(true, false)}
         options={{
           tabBarIcon: ({ focused }) => (
             <Image
@@ -85,6 +100,8 @@ const BottomTab = () => {
       <Tab.Screen
         name="Profile"
         component={Profile}
+        initialParams={{ name: "sds" }}
+        tabPress={() => setBoth(false, false)}
         options={{
           tabBarIcon: ({ focused }) => (
             <Image

@@ -1,7 +1,8 @@
 import { StyleSheet, Text, View, Button } from "react-native";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useCallback } from "react";
 import { Video, ResizeMode } from "expo-av";
 import colors from "../../styles/colors";
+import { useFocusEffect } from '@react-navigation/native';
 
 const ToggleVideo = () => {
   const video = useRef(null);
@@ -12,6 +13,18 @@ const ToggleVideo = () => {
   ];
   const [currentIndex, setCurrentIndex] = useState(0);
   const [status, setStatus] = useState({});
+
+  useFocusEffect(
+    useCallback(() => {
+      // if (shouldPlay) {
+      //   setIsPlaying(true);
+      // } else setIsPlaying(false);
+
+      return () => {
+        video.current.pauseAsync();
+      };
+    }, [])
+  );
 
   return (
     <View style={styles.container}>
