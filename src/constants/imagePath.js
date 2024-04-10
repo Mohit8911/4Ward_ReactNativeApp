@@ -21,6 +21,7 @@ export default {
   Cross: require("../assets/images/ic_cross.png"),
   Plus: require("../assets/images/ic_plus.png"),
   BlueTick: require("../assets/images/ic_blue_tick.png"),
+  PauseIndicator: require("../assets/images/pause-button.png"),
   GreyTick: require("../assets/images/ic_grey_tick.png"),
   dummySnap: {
     uri: "https://images.pexels.com/photos/2412607/pexels-photo-2412607.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",

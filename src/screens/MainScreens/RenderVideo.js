@@ -1,10 +1,12 @@
 import React, { useRef, useState, useEffect, useCallback } from "react";
-import { Dimensions, StyleSheet, View } from "react-native";
+import { Dimensions, StyleSheet, View, Image } from "react-native";
 import { ResizeMode, Video } from "expo-av";
 import colors from "../../styles/colors";
 import Slider from "@react-native-community/slider";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import { useFocusEffect } from "@react-navigation/native";
+import imagePath from "../../constants/imagePath";
+import { moderateScale, verticalScale } from "../../styles/scaling";
 
 const RenderVideo = ({ item, index, shouldPlay }) => {
   const videoRef = useRef(null);
@@ -95,20 +97,30 @@ const RenderVideo = ({ item, index, shouldPlay }) => {
           isMuted={isMuted}
           shouldPlay={isPlaying}
           resizeMode={ResizeMode.STRETCH}
-          onPlaybackStatusUpdate={status=> setStatus(status)}
+          onPlaybackStatusUpdate={(status) => setStatus(status)}
         />
         <Slider
-          style={{ width: '100%', height: 40, position:'absolute', bottom: 64}}
+          style={{
+            width: "100%",
+            height: 40,
+            position: "absolute",
+            bottom: 64,
+          }}
           thumbTintColor="red"
           minimumValue={0}
           maximumValue={status.durationMillis}
           value={status.positionMillis}
-          onValueChange={value => {
+          onValueChange={(value) => {
             videoRef.current.setPositionAsync(value);
           }}
           minimumTrackTintColor="red"
           maximumTrackTintColor="#000000"
         />
+        {!isPlaying && <Image
+          source={imagePath.PauseIndicator}
+          style={styles.pauseIndicator}
+          resizeMode="contain"
+        />}
       </View>
     </GestureDetector>
   );
@@ -131,5 +143,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-evenly",
     alignItems: "center",
+  },
+  pauseIndicator: {
+    position: "absolute",
+    alignSelf: "center",
+    height: verticalScale(40),
+    width: moderateScale(40),
+    bottom: (Dimensions.get("screen").height) / 2,
+    
   },
 });
